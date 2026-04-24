@@ -3,6 +3,9 @@ import Base from '../layouts/Base.astro';
 import Footer from '../components/Footer.astro';
 import VoiceCard from '../components/VoiceCard.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import attackJan30 from '../assets/attack-text-jan30.jpg';
+import attackFeb24 from '../assets/attack-text-feb24.jpg';
 
 const allVoices = await getCollection('voices');
 const indexVoices = allVoices
@@ -109,6 +112,21 @@ const mailtoHref =
     <h2>Why are OpenAI &amp; friends spending <em>over $10 million</em> on attack ads against Alex?</h2>
     <div class="prose">
       <p>Alex Bores wrote New York's RAISE Act — the country's most serious AI safety law. In response, a tech-industry super-PAC (Leading the Future, backed by a16z and AI-industry allies) has spent <strong>over $10 million</strong><sup class="cite"><a href="https://techcrunch.com/2026/03/03/ai-companies-are-spending-millions-to-thwart-this-former-tech-execs-congressional-bid/" target="_blank" rel="noopener">[1]</a></sup> in attack ads trying to sink his congressional campaign. This primary has become a proxy fight over AI policy — and it's winnable.</p>
+    </div>
+
+    <h3>What the attacks look like</h3>
+    <div class="prose" style="margin-bottom: 20px;">
+      <p>Texts received by NY-12 voters, paid for by "Think Big PAC":</p>
+    </div>
+    <div class="attack-grid">
+      <figure class="attack-figure">
+        <Image src={attackJan30} alt="SMS screenshot attacking Bores for his work at Palantir, the company that powers ICE. Paid for by Think Big PAC." class="attack-screenshot" loading="lazy" widths={[400, 600, 800]} sizes="(min-width: 640px) 380px, 100vw" />
+        <figcaption class="attack-caption">Jan 30, 2026 · Think Big PAC</figcaption>
+      </figure>
+      <figure class="attack-figure">
+        <Image src={attackFeb24} alt="SMS screenshot citing alleged Bloomberg reporting on Bores' time at Palantir. Paid for by Think Big PAC." class="attack-screenshot" loading="lazy" widths={[400, 600, 800]} sizes="(min-width: 640px) 380px, 100vw" />
+        <figcaption class="attack-caption">Feb 24, 2026 · Think Big PAC</figcaption>
+      </figure>
     </div>
 
     <h3>Voices</h3>
