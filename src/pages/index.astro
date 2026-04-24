@@ -19,6 +19,30 @@ const mailtoHref =
 ---
 <Base title="Got friends in NY-12? Help elect Alex Bores. · alexbores.io">
 
+  <aside class="sidebar-toc" aria-label="Section navigation">
+    <p class="sidebar-prompt">sections</p>
+    <ol class="sidebar-list">
+      <li>
+        <a href="#alex" data-section="alex">
+          <span class="s-num">01</span>
+          <span class="s-file">why-alex.md</span>
+        </a>
+      </li>
+      <li>
+        <a href="#election" data-section="election">
+          <span class="s-num">02</span>
+          <span class="s-file">about-election.md</span>
+        </a>
+      </li>
+      <li>
+        <a href="#volunteer" data-section="volunteer">
+          <span class="s-num">03</span>
+          <span class="s-file">where-we-need-you.md</span>
+        </a>
+      </li>
+    </ol>
+  </aside>
+
   <p class="eyebrow">alexbores.io</p>
 
   <h1 class="hero">
@@ -30,7 +54,7 @@ const mailtoHref =
   </p>
 
   <nav class="toc" aria-label="Page sections">
-    <p class="toc-prompt"><span class="sigil">$</span>ls sections/</p>
+    <p class="toc-prompt">sections</p>
     <ol class="toc-list">
       <li>
         <a href="#alex">
@@ -232,3 +256,30 @@ const mailtoHref =
 
   <Footer />
 </Base>
+
+<script>
+  const links = document.querySelectorAll<HTMLAnchorElement>('.sidebar-list a[data-section]');
+  const linkById = new Map<string, HTMLAnchorElement>();
+  links.forEach((l) => {
+    const id = l.dataset.section;
+    if (id) linkById.set(id, l);
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          links.forEach((l) => l.classList.remove('active'));
+          const link = linkById.get(entry.target.id);
+          if (link) link.classList.add('active');
+        }
+      }
+    },
+    { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+  );
+
+  ['alex', 'election', 'volunteer'].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>
