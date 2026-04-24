@@ -29,9 +29,9 @@ const mailtoHref =
         </a>
       </li>
       <li>
-        <a href="#election" data-section="election">
+        <a href="#strategy" data-section="strategy">
           <span class="s-num">02</span>
-          <span class="s-file">about-election.md</span>
+          <span class="s-file">strategy.md</span>
         </a>
       </li>
       <li>
@@ -64,10 +64,10 @@ const mailtoHref =
         </a>
       </li>
       <li>
-        <a href="#election">
+        <a href="#strategy">
           <span class="toc-num">02</span>
-          <span class="toc-file">about-election.md</span>
-          <span class="toc-desc">Jun 13 and Jun 23. Dates and dynamics.</span>
+          <span class="toc-file">strategy.md</span>
+          <span class="toc-desc">The math, and the plan.</span>
         </a>
       </li>
       <li>
@@ -111,10 +111,10 @@ const mailtoHref =
     </div>
   </section>
 
-  <!-- ABOUT THE ELECTION -->
-  <section class="block" id="election">
-    <p class="section-eyebrow">about the election</p>
-    <h2>About the election</h2>
+  <!-- THE STRATEGY -->
+  <section class="block" id="strategy">
+    <p class="section-eyebrow">the strategy</p>
+    <h2>The strategy</h2>
     <div class="dates">
       <div class="date-cell">
         <p class="date-label">Jun 13 · Saturday</p>
@@ -278,7 +278,7 @@ const mailtoHref =
     { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
   );
 
-  ['alex', 'election', 'volunteer'].forEach((id) => {
+  ['alex', 'strategy', 'volunteer'].forEach((id) => {
     const el = document.getElementById(id);
     if (el) observer.observe(el);
   });

@@ -7,8 +7,8 @@
   --border-strong: rgba(200, 215, 230, 0.2);
   --border-notice: rgba(220, 170, 70, 0.35);
   --fg: #e4ebf2;
-  --fg-muted: rgba(200, 215, 230, 0.75);
-  --fg-dim: rgba(200, 215, 230, 0.52);
+  --fg-muted: rgba(210, 222, 236, 0.86);
+  --fg-dim: rgba(200, 215, 230, 0.55);
   --accent: #64d89a;
   --accent-soft: rgba(100, 216, 154, 0.12);
   --eyebrow: rgba(100, 216, 154, 0.9);
@@ -288,7 +288,7 @@ section.block { margin: 0 0 72px; }
   margin: 0 0 10px;
 }
 .section-eyebrow::before {
-  content: "› ";
+  content: "// ";
   color: var(--accent);
   opacity: 0.8;
 }
