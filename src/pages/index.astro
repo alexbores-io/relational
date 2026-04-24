@@ -5,13 +5,8 @@ import { Image } from 'astro:assets';
 import attackJan30 from '../assets/attack-text-jan30.jpg';
 import attackFeb24 from '../assets/attack-text-feb24.jpg';
 
-const mailtoHref =
-  'mailto:hello@alexbores.io?subject=I%20want%20to%20help%20elect%20Alex%20Bores' +
-  '&body=Name%3A%0A%0A' +
-  'Where%20I%20live%20(NY-12%20%2F%20NYC%20%2F%20elsewhere%20in%20NY%20%2F%20out%20of%20state)%3A%0A%0A' +
-  'Time%20I%20can%20spend%20(a%20couple%20hours%20%2F%205%E2%80%9320%20hours%20%2F%20more)%3A%0A%0A' +
-  'What%20I%27m%20up%20for%20(pick%20any%3A%20messaging%20friends%20%2F%20canvassing%20%2F%20phone%20or%20text%20banking%20%2F%20donating%20%2F%20skills%20%2F%20other)%3A%0A%0A' +
-  'Anything%20else%20we%20should%20know%3A%0A';
+const interestFormHref =
+  'https://docs.google.com/forms/d/e/1FAIpQLSdf88V00XmpgTET2ENB-TDrmajP_p6WJS2xfVvhpheTmNpuEg/viewform';
 ---
 <Base title="Got friends in NY-12? Help elect Alex Bores. · alexbores.io">
 
@@ -238,10 +233,10 @@ const mailtoHref =
     </ol>
 
     <div class="cta-block" style="margin-top: 32px;">
-      <a class="btn" href={mailtoHref}>
+      <a class="btn" href={interestFormHref} target="_blank" rel="noopener">
         Count me in →
       </a>
-      <p class="cta-help">Not sure where to start? Email <a href="mailto:hello@alexbores.io">hello@alexbores.io</a> and we'll match you to something.</p>
+      <p class="cta-help">Short Google Form — name, location, what you're up for. Or email <a href="mailto:hello@alexbores.io">hello@alexbores.io</a> if that's easier.</p>
     </div>
   </section>
 
