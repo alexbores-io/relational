@@ -664,12 +664,12 @@ h4 {
   border-radius: var(--card-radius);
   overflow: hidden;
 }
-@media (min-width: 640px) {
-  .dates { grid-template-columns: 1fr 1fr; }
+@media (min-width: 720px) {
+  .dates { grid-template-columns: repeat(3, 1fr); }
 }
 .date-cell { padding: 22px 24px 24px; }
 .date-cell + .date-cell { border-top: 1px solid var(--border); }
-@media (min-width: 640px) {
+@media (min-width: 720px) {
   .date-cell + .date-cell { border-top: 0; border-left: 1px solid var(--border); }
 }
 .date-label {
