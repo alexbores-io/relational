@@ -19,9 +19,16 @@ const mailtoHref =
     <p class="sidebar-prompt">sections</p>
     <ol class="sidebar-list">
       <li>
-        <a href="#strategy" data-section="strategy">
+        <a href="#alex" data-section="alex">
           <span class="s-tree">├──</span>
           <span class="s-num">01</span>
+          <span class="s-file">why-alex.md</span>
+        </a>
+      </li>
+      <li>
+        <a href="#strategy" data-section="strategy">
+          <span class="s-tree">├──</span>
+          <span class="s-num">02</span>
           <span class="s-file">our-strategy.md</span>
         </a>
         <ol class="sidebar-sublist">
@@ -48,7 +55,7 @@ const mailtoHref =
       <li>
         <a href="#volunteer" data-section="volunteer">
           <span class="s-tree">└──</span>
-          <span class="s-num">02</span>
+          <span class="s-num">03</span>
           <span class="s-file">where-we-need-you.md</span>
         </a>
       </li>
@@ -69,9 +76,17 @@ const mailtoHref =
     <p class="toc-prompt">sections</p>
     <ol class="toc-list">
       <li>
-        <a href="#strategy">
+        <a href="#alex">
           <span class="toc-tree">├──</span>
           <span class="toc-num">01</span>
+          <span class="toc-file">why-alex.md</span>
+          <span class="toc-desc">The RAISE Act, endorsements, vigorous opposition.</span>
+        </a>
+      </li>
+      <li>
+        <a href="#strategy">
+          <span class="toc-tree">├──</span>
+          <span class="toc-num">02</span>
           <span class="toc-file">our-strategy.md</span>
           <span class="toc-desc">Who we're reaching. Who's attacking him. Key dates.</span>
         </a>
@@ -102,13 +117,23 @@ const mailtoHref =
       <li>
         <a href="#volunteer">
           <span class="toc-tree">└──</span>
-          <span class="toc-num">02</span>
+          <span class="toc-num">03</span>
           <span class="toc-file">where-we-need-you.md</span>
           <span class="toc-desc">Ways to help — and how to sign up.</span>
         </a>
       </li>
     </ol>
   </nav>
+
+  <!-- WHY ALEX -->
+  <section class="block" id="alex">
+    <p class="section-eyebrow">why alex?</p>
+    <h2>Why Alex?</h2>
+    <div class="prose">
+      <p>Alex Bores is the author and sole New York Assembly sponsor of the <strong>RAISE Act</strong>, which holds frontier AI labs accountable for serious damages caused by AI. He has won endorsements from leading voices in the AI safety community<sup class="cite"><a href="/voices">[1]</a></sup>, and drawn vigorous opposition from OpenAI, Palantir, and other firms in the AI industry<sup class="cite"><a href="https://techcrunch.com/2026/03/03/ai-companies-are-spending-millions-to-thwart-this-former-tech-execs-congressional-bid/" target="_blank" rel="noopener">[2]</a></sup><sup class="cite"><a href="https://www.nytimes.com/2026/04/21/opinion/ezra-klein-podcast-alex-bores.html" target="_blank" rel="noopener">[3]</a></sup>.</p>
+      <p>If you're visiting this page, you probably know all that — and you're in a great position to persuade exactly the voters in NY-12 whose support Alex needs to win.</p>
+    </div>
+  </section>
 
   <!-- OUR STRATEGY -->
   <section class="block" id="strategy">
@@ -156,11 +181,11 @@ const mailtoHref =
         </tbody>
       </table>
     </div>
-    <p class="data-caption">Source: Census Reporter, NY-12 profile<sup class="cite"><a href="https://censusreporter.org/profiles/50000US3612-congressional-district-12-ny/" target="_blank" rel="noopener">[2]</a></sup></p>
+    <p class="data-caption">Source: Census Reporter, NY-12 profile<sup class="cite"><a href="https://censusreporter.org/profiles/50000US3612-congressional-district-12-ny/" target="_blank" rel="noopener">[4]</a></sup></p>
 
     <h3 id="attacks">The attacks</h3>
     <div class="prose" style="margin-bottom: 20px;">
-      <p>The Leading the Future Super PAC — led by OpenAI, Palantir &amp; friends — has spent <strong>over $10 million</strong><sup class="cite"><a href="https://techcrunch.com/2026/03/03/ai-companies-are-spending-millions-to-thwart-this-former-tech-execs-congressional-bid/" target="_blank" rel="noopener">[1]</a></sup> blanketing the district with text messages like these:</p>
+      <p>The Leading the Future Super PAC — led by OpenAI, Palantir &amp; friends — has spent <strong>over $10 million</strong><sup class="cite"><a href="https://techcrunch.com/2026/03/03/ai-companies-are-spending-millions-to-thwart-this-former-tech-execs-congressional-bid/" target="_blank" rel="noopener">[2]</a></sup> blanketing the district with text messages like these:</p>
     </div>
     <div class="attack-grid">
       <figure class="attack-figure">
@@ -344,7 +369,7 @@ const mailtoHref =
     { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
   );
 
-  ['strategy', 'district', 'attacks', 'dates', 'volunteer'].forEach((id) => {
+  ['alex', 'strategy', 'district', 'attacks', 'dates', 'volunteer'].forEach((id) => {
     const el = document.getElementById(id);
     if (el) observer.observe(el);
   });
