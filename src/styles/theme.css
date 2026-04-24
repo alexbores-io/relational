@@ -101,6 +101,37 @@ hr.rule {
   margin: 0 0 40px;
 }
 
+/* ---------- ToC ---------- */
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin: 8px 0 48px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.toc a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+.toc a::before {
+  content: "› ";
+  color: var(--accent);
+  opacity: 0.6;
+  margin-right: 2px;
+}
+.toc a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+.toc a:hover::before { opacity: 1; }
+
 /* ---------- notice ---------- */
 .notice {
   border: 1px solid var(--border-notice);
