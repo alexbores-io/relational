@@ -40,6 +40,12 @@ const mailtoHref =
         </a>
         <ol class="sidebar-sublist">
           <li>
+            <a href="#district" data-section="district">
+              <span class="s-tree">│   ├──</span>
+              <span class="s-file">the-district.md</span>
+            </a>
+          </li>
+          <li>
             <a href="#dates" data-section="dates">
               <span class="s-tree">│   └──</span>
               <span class="s-file">key-dates.md</span>
@@ -86,6 +92,13 @@ const mailtoHref =
           <span class="toc-desc">The math, and the plan.</span>
         </a>
         <ol class="toc-sublist">
+          <li>
+            <a href="#district">
+              <span class="toc-tree">│   ├──</span>
+              <span class="toc-file">the-district.md</span>
+              <span class="toc-desc">Who lives in NY-12.</span>
+            </a>
+          </li>
           <li>
             <a href="#dates">
               <span class="toc-tree">│   └──</span>
@@ -363,7 +376,7 @@ const mailtoHref =
     { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
   );
 
-  ['alex', 'strategy', 'volunteer', 'dates'].forEach((id) => {
+  ['alex', 'strategy', 'district', 'dates', 'volunteer'].forEach((id) => {
     const el = document.getElementById(id);
     if (el) observer.observe(el);
   });
