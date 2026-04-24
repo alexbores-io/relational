@@ -19,16 +19,9 @@ const mailtoHref =
     <p class="sidebar-prompt">sections</p>
     <ol class="sidebar-list">
       <li>
-        <a href="#alex" data-section="alex">
-          <span class="s-tree">├──</span>
-          <span class="s-num">01</span>
-          <span class="s-file">why-alex.md</span>
-        </a>
-      </li>
-      <li>
         <a href="#strategy" data-section="strategy">
           <span class="s-tree">├──</span>
-          <span class="s-num">02</span>
+          <span class="s-num">01</span>
           <span class="s-file">our-strategy.md</span>
         </a>
         <ol class="sidebar-sublist">
@@ -36,6 +29,12 @@ const mailtoHref =
             <a href="#district" data-section="district">
               <span class="s-tree">│   ├──</span>
               <span class="s-file">the-district.md</span>
+            </a>
+          </li>
+          <li>
+            <a href="#attacks" data-section="attacks">
+              <span class="s-tree">│   ├──</span>
+              <span class="s-file">the-attacks.md</span>
             </a>
           </li>
           <li>
@@ -49,7 +48,7 @@ const mailtoHref =
       <li>
         <a href="#volunteer" data-section="volunteer">
           <span class="s-tree">└──</span>
-          <span class="s-num">03</span>
+          <span class="s-num">02</span>
           <span class="s-file">where-we-need-you.md</span>
         </a>
       </li>
@@ -70,19 +69,11 @@ const mailtoHref =
     <p class="toc-prompt">sections</p>
     <ol class="toc-list">
       <li>
-        <a href="#alex">
-          <span class="toc-tree">├──</span>
-          <span class="toc-num">01</span>
-          <span class="toc-file">why-alex.md</span>
-          <span class="toc-desc">Why OpenAI is spending millions to beat him.</span>
-        </a>
-      </li>
-      <li>
         <a href="#strategy">
           <span class="toc-tree">├──</span>
-          <span class="toc-num">02</span>
+          <span class="toc-num">01</span>
           <span class="toc-file">our-strategy.md</span>
-          <span class="toc-desc">The math, and the plan.</span>
+          <span class="toc-desc">Who we're reaching. Who's attacking him. Key dates.</span>
         </a>
         <ol class="toc-sublist">
           <li>
@@ -90,6 +81,13 @@ const mailtoHref =
               <span class="toc-tree">│   ├──</span>
               <span class="toc-file">the-district.md</span>
               <span class="toc-desc">Who lives in NY-12.</span>
+            </a>
+          </li>
+          <li>
+            <a href="#attacks">
+              <span class="toc-tree">│   ├──</span>
+              <span class="toc-file">the-attacks.md</span>
+              <span class="toc-desc">OpenAI's $10M text campaign.</span>
             </a>
           </li>
           <li>
@@ -104,7 +102,7 @@ const mailtoHref =
       <li>
         <a href="#volunteer">
           <span class="toc-tree">└──</span>
-          <span class="toc-num">03</span>
+          <span class="toc-num">02</span>
           <span class="toc-file">where-we-need-you.md</span>
           <span class="toc-desc">Ways to help — and how to sign up.</span>
         </a>
@@ -112,41 +110,13 @@ const mailtoHref =
     </ol>
   </nav>
 
-  <!-- WHY ALEX (includes voices) -->
-  <section class="block" id="alex">
-    <p class="section-eyebrow">why alex?</p>
-    <h2>OpenAI's <em>$10 million</em><sup class="cite"><a href="https://techcrunch.com/2026/03/03/ai-companies-are-spending-millions-to-thwart-this-former-tech-execs-congressional-bid/" target="_blank" rel="noopener">[1]</a></sup> campaign against Alex.</h2>
-    <div class="prose" style="margin-bottom: 20px;">
-      <p>NY-12 primary voters are blanketed with texts of the like:</p>
-    </div>
-    <div class="attack-grid">
-      <figure class="attack-figure">
-        <Image src={attackJan30} alt="SMS screenshot attacking Bores for his work at Palantir, the company that powers ICE. Paid for by Think Big PAC." class="attack-screenshot" loading="lazy" widths={[400, 600, 800]} sizes="(min-width: 640px) 380px, 100vw" />
-        <figcaption class="attack-caption">Jan 30, 2026 · Think Big PAC</figcaption>
-      </figure>
-      <figure class="attack-figure">
-        <Image src={attackFeb24} alt="SMS screenshot citing alleged Bloomberg reporting on Bores' time at Palantir. Paid for by Think Big PAC." class="attack-screenshot" loading="lazy" widths={[400, 600, 800]} sizes="(min-width: 640px) 380px, 100vw" />
-        <figcaption class="attack-caption">Feb 24, 2026 · Think Big PAC</figcaption>
-      </figure>
-    </div>
-
-    <p class="see-also">
-      See also <a href="/voices">voices.md</a> — press coverage and on-record commentary from Eric Neyman, Scott Alexander, Ezra Klein, and more.
-    </p>
-  </section>
-
   <!-- OUR STRATEGY -->
   <section class="block" id="strategy">
     <p class="section-eyebrow">our strategy</p>
-    <h2>Our strategy: win knowledge workers.</h2>
-    <div class="prose">
-      <p>The NY-12 Democratic primary is on <strong>June 23, 2026</strong>. Primaries like this are typically decided by a few hundred to a few thousand votes — turnout is low, persuasion is tractable, and most people haven't thought about it yet.</p>
-      <p>Collectively, our communities know <em>thousands</em> of registered Democrats in NY-12. If a few hundred of us each have a real conversation with 3–5 friends, we can plausibly move a hundred-plus votes. In a race this size, that's material.</p>
-    </div>
+    <h2>Our strategy.</h2>
 
-    <h3 id="district">The district</h3>
-    <div class="prose" style="margin-bottom: 14px;">
-      <p>NY-12 is among the most educated, highest-income districts in the country. If you're in tech, EA, or adjacent circles, your network disproportionately overlaps with it.</p>
+    <div class="prose" id="district">
+      <p>NY-12 is dense with highly-educated professionals. It's among the most highly-educated, highest-income districts in NYC and in the country:</p>
     </div>
     <div class="data-table-wrap">
       <table class="data-table">
@@ -187,6 +157,28 @@ const mailtoHref =
       </table>
     </div>
     <p class="data-caption">Source: Census Reporter, NY-12 profile<sup class="cite"><a href="https://censusreporter.org/profiles/50000US3612-congressional-district-12-ny/" target="_blank" rel="noopener">[2]</a></sup></p>
+
+    <h3 id="attacks">The attacks</h3>
+    <div class="prose" style="margin-bottom: 20px;">
+      <p>The Leading the Future Super PAC — led by OpenAI, Palantir &amp; friends — has spent <strong>over $10 million</strong><sup class="cite"><a href="https://techcrunch.com/2026/03/03/ai-companies-are-spending-millions-to-thwart-this-former-tech-execs-congressional-bid/" target="_blank" rel="noopener">[1]</a></sup> blanketing the district with text messages like these:</p>
+    </div>
+    <div class="attack-grid">
+      <figure class="attack-figure">
+        <Image src={attackJan30} alt="SMS screenshot attacking Bores for his work at Palantir, the company that powers ICE. Paid for by Think Big PAC." class="attack-screenshot" loading="lazy" widths={[400, 600, 800]} sizes="(min-width: 640px) 380px, 100vw" />
+        <figcaption class="attack-caption">Jan 30, 2026 · Think Big PAC</figcaption>
+      </figure>
+      <figure class="attack-figure">
+        <Image src={attackFeb24} alt="SMS screenshot citing alleged Bloomberg reporting on Bores' time at Palantir. Paid for by Think Big PAC." class="attack-screenshot" loading="lazy" widths={[400, 600, 800]} sizes="(min-width: 640px) 380px, 100vw" />
+        <figcaption class="attack-caption">Feb 24, 2026 · Think Big PAC</figcaption>
+      </figure>
+    </div>
+    <div class="prose" style="margin-top: 22px;">
+      <p>Some voters are persuaded by these text messages. Many voters, rightly, find them suspicious and annoying — and are more than happy to learn the truth about the ads and why it's critical to support Alex. <strong>That is where our community comes in.</strong></p>
+    </div>
+
+    <p class="see-also">
+      See also <a href="/voices">voices.md</a> — press coverage and on-record commentary from Eric Neyman, Scott Alexander, Ezra Klein, and more.
+    </p>
 
     <h3 id="dates">Key dates</h3>
     <div class="dates">
@@ -352,7 +344,7 @@ const mailtoHref =
     { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
   );
 
-  ['alex', 'strategy', 'district', 'dates', 'volunteer'].forEach((id) => {
+  ['strategy', 'district', 'attacks', 'dates', 'volunteer'].forEach((id) => {
     const el = document.getElementById(id);
     if (el) observer.observe(el);
   });
