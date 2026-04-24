@@ -101,36 +101,78 @@ hr.rule {
   margin: 0 0 40px;
 }
 
-/* ---------- ToC ---------- */
+/* ---------- ToC (terminal-style) ---------- */
 .toc {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 24px;
-  margin: 8px 0 48px;
-  padding: 14px 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  margin: 8px 0 64px;
 }
-.toc a {
+.toc-prompt {
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--fg-muted);
+  letter-spacing: 0;
+  margin: 0 0 12px;
+}
+.toc-prompt .sigil {
+  color: var(--accent);
+  margin-right: 8px;
+}
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.toc-list > li { margin: 0; }
+.toc-list > li + li { margin-top: 2px; }
+
+.toc-list a {
+  display: grid;
+  grid-template-columns: 2.25em minmax(0, 13em) minmax(0, 1fr);
+  align-items: baseline;
+  gap: 20px;
+  padding: 7px 0 7px 12px;
+  border-left: 2px solid transparent;
+  font-family: var(--font-mono);
+  font-size: 14px;
   color: var(--fg-muted);
   text-decoration: none;
-  transition: color 160ms ease;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
 }
-.toc a::before {
-  content: "› ";
-  color: var(--accent);
-  opacity: 0.6;
-  margin-right: 2px;
-}
-.toc a:hover {
-  color: var(--accent);
+.toc-list a:hover {
+  border-left-color: var(--accent);
+  background: var(--bg-elev);
+  color: var(--fg);
   text-decoration: none;
 }
-.toc a:hover::before { opacity: 1; }
+
+.toc-num {
+  color: var(--fg-dim);
+  font-variant-numeric: tabular-nums;
+}
+.toc-list a:hover .toc-num { color: var(--accent); }
+
+.toc-file { color: var(--accent); }
+.toc-list a:hover .toc-file {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.toc-desc {
+  color: var(--fg-dim);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+.toc-list a:hover .toc-desc { color: var(--fg-muted); }
+
+@media (max-width: 600px) {
+  .toc-list a {
+    grid-template-columns: 2em minmax(0, 1fr);
+    gap: 14px;
+  }
+  .toc-desc { display: none; }
+}
 
 /* ---------- notice ---------- */
 .notice {
