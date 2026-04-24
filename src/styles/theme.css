@@ -146,11 +146,11 @@ sup.cite a:hover {
 .toc-list > li { margin: 0; }
 .toc-list > li + li { margin-top: 2px; }
 
-.toc-list a {
+.toc-list > li > a {
   display: grid;
-  grid-template-columns: 2.25em minmax(0, 13em) minmax(0, 1fr);
+  grid-template-columns: 3.5em 2em minmax(0, 13em) minmax(0, 1fr);
   align-items: baseline;
-  gap: 20px;
+  gap: 10px;
   padding: 7px 0 7px 12px;
   border-left: 2px solid transparent;
   font-family: var(--font-mono);
@@ -159,11 +159,42 @@ sup.cite a:hover {
   text-decoration: none;
   transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
 }
-.toc-list a:hover {
+.toc-sublist {
+  list-style: none;
+  padding: 0;
+  margin: 2px 0 0;
+}
+.toc-sublist > li { margin: 0; }
+.toc-sublist > li > a {
+  display: grid;
+  grid-template-columns: 5.5em minmax(0, 13em) minmax(0, 1fr);
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 0 6px 12px;
+  border-left: 2px solid transparent;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  color: var(--fg-muted);
+  text-decoration: none;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+.toc-list a:hover,
+.toc-sublist a:hover {
   border-left-color: var(--accent);
   background: var(--bg-elev);
   color: var(--fg);
   text-decoration: none;
+}
+
+.toc-tree {
+  color: var(--fg-dim);
+  opacity: 0.5;
+  white-space: pre;
+}
+.toc-list a:hover .toc-tree,
+.toc-sublist a:hover .toc-tree {
+  color: var(--accent);
+  opacity: 0.9;
 }
 
 .toc-num {
@@ -173,7 +204,8 @@ sup.cite a:hover {
 .toc-list a:hover .toc-num { color: var(--accent); }
 
 .toc-file { color: var(--accent); }
-.toc-list a:hover .toc-file {
+.toc-list a:hover .toc-file,
+.toc-sublist a:hover .toc-file {
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
@@ -186,12 +218,17 @@ sup.cite a:hover {
   letter-spacing: 0;
   line-height: 1.5;
 }
-.toc-list a:hover .toc-desc { color: var(--fg-muted); }
+.toc-list a:hover .toc-desc,
+.toc-sublist a:hover .toc-desc { color: var(--fg-muted); }
 
 @media (max-width: 600px) {
-  .toc-list a {
-    grid-template-columns: 2em minmax(0, 1fr);
-    gap: 14px;
+  .toc-list > li > a {
+    grid-template-columns: 2.25em 2em minmax(0, 1fr);
+    gap: 8px;
+  }
+  .toc-sublist > li > a {
+    grid-template-columns: 4em minmax(0, 1fr);
+    gap: 8px;
   }
   .toc-desc { display: none; }
 }
@@ -222,16 +259,20 @@ sup.cite a:hover {
   color: var(--accent);
   opacity: 0.8;
 }
-.sidebar-list {
+.sidebar-list,
+.sidebar-sublist {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 .sidebar-list > li { margin: 0; }
-.sidebar-list a {
+.sidebar-sublist { margin-top: 2px; }
+
+.sidebar-list a,
+.sidebar-sublist a {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 8px;
   padding: 6px 12px;
   font-family: var(--font-mono);
   font-size: 12px;
@@ -239,17 +280,35 @@ sup.cite a:hover {
   text-decoration: none;
   border-left: 2px solid transparent;
   transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+  white-space: nowrap;
 }
-.sidebar-list a:hover {
+.sidebar-list a:hover,
+.sidebar-sublist a:hover {
   color: var(--fg);
   border-left-color: var(--accent);
   background: var(--bg-elev);
   text-decoration: none;
 }
-.sidebar-list a.active {
+.sidebar-list a.active,
+.sidebar-sublist a.active {
   border-left-color: var(--accent);
   color: var(--fg);
 }
+
+.sidebar-list .s-tree,
+.sidebar-sublist .s-tree {
+  color: var(--fg-dim);
+  opacity: 0.5;
+  white-space: pre;
+}
+.sidebar-list a:hover .s-tree,
+.sidebar-list a.active .s-tree,
+.sidebar-sublist a:hover .s-tree,
+.sidebar-sublist a.active .s-tree {
+  color: var(--accent);
+  opacity: 0.9;
+}
+
 .sidebar-list .s-num {
   color: var(--fg-dim);
   opacity: 0.6;
@@ -260,9 +319,17 @@ sup.cite a:hover {
   color: var(--accent);
   opacity: 1;
 }
-.sidebar-list .s-file { color: var(--accent); opacity: 0.7; }
+.sidebar-list .s-file,
+.sidebar-sublist .s-file {
+  color: var(--accent);
+  opacity: 0.7;
+}
 .sidebar-list a:hover .s-file,
-.sidebar-list a.active .s-file { opacity: 1; }
+.sidebar-list a.active .s-file,
+.sidebar-sublist a:hover .s-file,
+.sidebar-sublist a.active .s-file {
+  opacity: 1;
+}
 
 /* ---------- notice ---------- */
 .notice {

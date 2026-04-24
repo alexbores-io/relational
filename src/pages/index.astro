@@ -24,18 +24,29 @@ const mailtoHref =
     <ol class="sidebar-list">
       <li>
         <a href="#alex" data-section="alex">
+          <span class="s-tree">├──</span>
           <span class="s-num">01</span>
           <span class="s-file">why-alex.md</span>
         </a>
       </li>
       <li>
         <a href="#strategy" data-section="strategy">
+          <span class="s-tree">├──</span>
           <span class="s-num">02</span>
           <span class="s-file">strategy.md</span>
         </a>
+        <ol class="sidebar-sublist">
+          <li>
+            <a href="#dates" data-section="dates">
+              <span class="s-tree">│   └──</span>
+              <span class="s-file">key-dates.md</span>
+            </a>
+          </li>
+        </ol>
       </li>
       <li>
         <a href="#volunteer" data-section="volunteer">
+          <span class="s-tree">└──</span>
           <span class="s-num">03</span>
           <span class="s-file">where-we-need-you.md</span>
         </a>
@@ -58,6 +69,7 @@ const mailtoHref =
     <ol class="toc-list">
       <li>
         <a href="#alex">
+          <span class="toc-tree">├──</span>
           <span class="toc-num">01</span>
           <span class="toc-file">why-alex.md</span>
           <span class="toc-desc">Why OpenAI is spending millions to beat him.</span>
@@ -65,13 +77,24 @@ const mailtoHref =
       </li>
       <li>
         <a href="#strategy">
+          <span class="toc-tree">├──</span>
           <span class="toc-num">02</span>
           <span class="toc-file">strategy.md</span>
           <span class="toc-desc">The math, and the plan.</span>
         </a>
+        <ol class="toc-sublist">
+          <li>
+            <a href="#dates">
+              <span class="toc-tree">│   └──</span>
+              <span class="toc-file">key-dates.md</span>
+              <span class="toc-desc">June 13, June 23.</span>
+            </a>
+          </li>
+        </ol>
       </li>
       <li>
         <a href="#volunteer">
+          <span class="toc-tree">└──</span>
           <span class="toc-num">03</span>
           <span class="toc-file">where-we-need-you.md</span>
           <span class="toc-desc">Ways to help — and how to sign up.</span>
@@ -86,7 +109,6 @@ const mailtoHref =
     <h2>Why are OpenAI &amp; friends spending <em>over $10 million</em> on attack ads against Alex?</h2>
     <div class="prose">
       <p>Alex Bores wrote New York's RAISE Act — the country's most serious AI safety law. In response, a tech-industry super-PAC (Leading the Future, backed by a16z and AI-industry allies) has spent <strong>over $10 million</strong><sup class="cite"><a href="https://techcrunch.com/2026/03/03/ai-companies-are-spending-millions-to-thwart-this-former-tech-execs-congressional-bid/" target="_blank" rel="noopener">[1]</a></sup> in attack ads trying to sink his congressional campaign. This primary has become a proxy fight over AI policy — and it's winnable.</p>
-      <p>The NY-12 Democratic primary is on <strong>June 23, 2026</strong>. Primaries like this are typically decided by a few hundred to a few thousand votes — turnout is low, persuasion is tractable, and most people haven't thought about it yet. If a few hundred of us each have a real conversation with 3–5 friends, we can plausibly move a hundred-plus votes.</p>
     </div>
 
     <h3>Voices</h3>
@@ -115,6 +137,12 @@ const mailtoHref =
   <section class="block" id="strategy">
     <p class="section-eyebrow">the strategy</p>
     <h2>The strategy</h2>
+    <div class="prose">
+      <p>The NY-12 Democratic primary is on <strong>June 23, 2026</strong>. Primaries like this are typically decided by a few hundred to a few thousand votes — turnout is low, persuasion is tractable, and most people haven't thought about it yet.</p>
+      <p>Collectively, our communities know <em>thousands</em> of registered Democrats in NY-12. If a few hundred of us each have a real conversation with 3–5 friends, we can plausibly move a hundred-plus votes. In a race this size, that's material.</p>
+    </div>
+
+    <h3 id="dates">Key dates</h3>
     <div class="dates">
       <div class="date-cell">
         <p class="date-label">Jun 13 · Saturday</p>
@@ -278,7 +306,7 @@ const mailtoHref =
     { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
   );
 
-  ['alex', 'strategy', 'volunteer'].forEach((id) => {
+  ['alex', 'strategy', 'volunteer', 'dates'].forEach((id) => {
     const el = document.getElementById(id);
     if (el) observer.observe(el);
   });
