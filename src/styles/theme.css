@@ -112,6 +112,41 @@ hr.rule {
   margin: 0 0 40px;
 }
 
+/* ---------- site nav ---------- */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 0 0 36px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.site-nav a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 160ms ease, opacity 160ms ease;
+}
+.site-nav a::before {
+  content: "// ";
+  color: var(--accent);
+  opacity: 0.6;
+}
+.site-nav a:hover {
+  color: var(--fg);
+  text-decoration: none;
+}
+.site-nav a:hover::before { opacity: 1; }
+.site-nav a.current {
+  color: var(--fg-dim);
+  pointer-events: none;
+  cursor: default;
+}
+.site-nav a.current::before {
+  color: var(--fg-dim);
+  opacity: 0.4;
+}
+
 /* ---------- TODO banner ---------- */
 .todo-banner {
   background: var(--bg-elev);
