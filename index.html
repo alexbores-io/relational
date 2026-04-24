@@ -160,8 +160,17 @@
   h3 {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 15px;
-    letter-spacing: 0.02em;
+    font-size: clamp(18px, 1.7vw, 21px);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--fg);
+    margin: 48px 0 12px;
+  }
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--fg-dim);
     margin: 28px 0 10px;
@@ -478,31 +487,7 @@
     <strong>This site is not operated by the Bores campaign.</strong> It's an independent effort by supporters doing relational organizing on his behalf. Any views here are the organizers'.
   </div>
 
-  <!-- WAYS TO HELP TABLEAU -->
-  <section class="block">
-    <div class="grid grid-3">
-      <a class="card" href="#what">
-        <p class="card-eyebrow">Relational</p>
-        <h4>Message 3–5 friends in NY-12</h4>
-        <p>~2–5 hrs over six weeks. The thing we most need volunteers for.</p>
-        <span class="card-more">How it works →</span>
-      </a>
-      <a class="card" href="#other">
-        <p class="card-eyebrow">Hands-on</p>
-        <h4>Canvass, phones, or poll greet</h4>
-        <p>Best if you're in NY-12 or NYC. Remote phone/text banking works from anywhere.</p>
-        <span class="card-more">See options →</span>
-      </a>
-      <a class="card" href="#other">
-        <p class="card-eyebrow">Support</p>
-        <h4>Donate, lend skills, or amplify</h4>
-        <p>FEC limits apply. Pro skills need to be at market rate unless genuinely volunteer.</p>
-        <span class="card-more">See details →</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- WHY -->
+  <!-- WHY (includes voices) -->
   <section class="block" id="why">
     <p class="section-eyebrow">why</p>
     <h2>Why this matters</h2>
@@ -510,13 +495,9 @@
       <p>The NY-12 Democratic primary is on <strong>June 23, 2026</strong>. Primaries like this are typically decided by a few hundred to a few thousand votes — turnout is low, persuasion is tractable, and most people haven't thought about it yet.</p>
       <p>Collectively, our communities know <em>thousands</em> of registered Democrats in NY-12. If a few hundred of us each have a real conversation with 3–5 friends, we can plausibly move a hundred-plus votes. In a race this size, that's material.</p>
     </div>
-  </section>
 
-  <!-- VOICES -->
-  <section class="block" id="voices">
-    <p class="section-eyebrow">voices</p>
-    <h2>Voices</h2>
-    <div class="prose" style="margin-bottom: 24px;">
+    <h3>Voices</h3>
+    <div class="prose" style="margin-bottom: 20px;">
       <p>On-record commentary from tech, EA, and media. Not formal endorsements — click through for context.</p>
     </div>
     <div class="grid grid-2">
@@ -548,11 +529,37 @@
     </div>
   </section>
 
-  <!-- WHAT -->
-  <section class="block" id="what">
-    <p class="section-eyebrow">how</p>
-    <h2>What you'd actually do</h2>
+  <!-- WAYS TO HELP (tableau + relational deep dive + other + single CTA) -->
+  <section class="block" id="help">
+    <p class="section-eyebrow">how to help</p>
+    <h2>Ways to help</h2>
+
+    <!-- tableau: quick scan -->
+    <div class="grid grid-3">
+      <a class="card" href="#relational">
+        <p class="card-eyebrow">Relational</p>
+        <h4>Message 3–5 friends in NY-12</h4>
+        <p>~2–5 hrs over six weeks. The thing we most need volunteers for.</p>
+        <span class="card-more">How it works →</span>
+      </a>
+      <a class="card" href="#other-local">
+        <p class="card-eyebrow">Hands-on</p>
+        <h4>Canvass, phones, or poll greet</h4>
+        <p>Best if you're in NY-12 or NYC. Remote phone/text banking works from anywhere.</p>
+        <span class="card-more">See options →</span>
+      </a>
+      <a class="card" href="#other-anywhere">
+        <p class="card-eyebrow">Support</p>
+        <h4>Donate, lend skills, or amplify</h4>
+        <p>FEC limits apply. Pro skills need to be at market rate unless genuinely volunteer.</p>
+        <span class="card-more">See details →</span>
+      </a>
+    </div>
+
+    <!-- relational deep dive -->
+    <h3 id="relational">The main ask: relational organizing</h3>
     <div class="prose">
+      <p>Roughly two to five hours of your time across six weeks, doing the following:</p>
       <ul>
         <li><strong>Find 3–5 people you know in NY-12.</strong> We'll show you <a href="https://reach.vote/">Reach</a>, an app that cross-references your contacts against the voter file.</li>
         <li><strong>Message them.</strong> Text, call, whatever's natural. Tell them why you care about Bores.</li>
@@ -560,7 +567,47 @@
         <li><strong>Follow up.</strong> Once closer to election day, a short check-in.</li>
         <li><strong>Log it</strong> so we can tell who's already been contacted — the goal is one friend reaching out, not ten.</li>
       </ul>
-      <p>Realistically: ~2–5 hours across six weeks. You don't have to do anything aversive. If you want to do more, we'll find things.</p>
+      <p>You don't have to do anything aversive. If you want to do more, we'll find things.</p>
+
+      <h4>Who should reach out to friends?</h4>
+      <ul>
+        <li><strong>People in New York City</strong> — more latitude, it's not weird to organize politically in your own city.</li>
+        <li><strong>People outside New York</strong> — only for contacts you'd already text casually. Don't cold-message someone you haven't spoken to in five years; that reads as weird and is counterproductive.</li>
+      </ul>
+    </div>
+
+    <!-- other ways -->
+    <h3 id="other">Other ways to help</h3>
+    <div class="prose">
+      <p>Relational outreach isn't for everyone, and not everyone knows people in NY-12. Plenty of other useful things:</p>
+
+      <h4 id="other-local">If you're in NY-12 or NYC</h4>
+      <ul>
+        <li>Canvassing with the campaign</li>
+        <li>Phone or text banking off campaign-provided lists</li>
+        <li>Poll greeting on election day (Jun 23) or during early voting (Jun 13–22)</li>
+        <li>Showing up at events — visibility helps</li>
+      </ul>
+
+      <h4 id="other-anywhere">If you're anywhere</h4>
+      <ul>
+        <li><strong>Donating</strong> to the campaign (FEC limits apply)</li>
+        <li><strong>Remote phone or text banking</strong> — works from anywhere</li>
+        <li><strong>Skills</strong> — design, dev, writing, ops. If you do this professionally and want to contribute, read the FEC note below first</li>
+        <li><strong>Thoughtful amplification</strong> online — substantive posts from people who know the candidate beat generic "vote for X" spam</li>
+      </ul>
+    </div>
+
+    <!-- single unified CTA -->
+    <h3 id="join">Get involved</h3>
+    <div class="prose" style="margin-bottom: 24px;">
+      <p>Tell us a little about you and we'll match you to something useful — probably within a day or two. Relational outreach, something else, we'll figure it out.</p>
+    </div>
+    <div class="cta-block">
+      <a class="btn" href="mailto:hello@alexbores.io?subject=I%20want%20to%20help%20elect%20Alex%20Bores&body=Name%3A%0A%0AWhere%20I%20live%20(NY-12%20%2F%20NYC%20%2F%20elsewhere%20in%20NY%20%2F%20out%20of%20state)%3A%0A%0ATime%20I%20can%20spend%20(a%20couple%20hours%20%2F%205%E2%80%9320%20hours%20%2F%20more)%3A%0A%0AWhat%20I%27m%20up%20for%20(pick%20any%3A%20messaging%20friends%20%2F%20canvassing%20%2F%20phone%20or%20text%20banking%20%2F%20donating%20%2F%20skills%20%2F%20other)%3A%0A%0AAnything%20else%20we%20should%20know%3A%0A">
+        Count me in →
+      </a>
+      <p class="cta-help">Opens an email with a short template. Or just write a sentence — we'll take it from there. Either way, <a href="mailto:hello@alexbores.io">hello@alexbores.io</a>.</p>
     </div>
   </section>
 
@@ -582,58 +629,6 @@
     </div>
     <div class="prose" style="margin-top: 20px;">
       <p>If you want to contact someone who isn't registered to vote in New York, they need to register by <strong>June 13</strong>. It's too late to re-register with a party affiliation, so outreach should focus on current registered Democrats and unregistered New Yorkers.</p>
-    </div>
-  </section>
-
-  <!-- WHO -->
-  <section class="block">
-    <p class="section-eyebrow">who</p>
-    <h2>Who should reach out to friends?</h2>
-    <div class="prose">
-      <ul>
-        <li><strong>People in New York City</strong> — more latitude, it's not weird to organize politically in your own city.</li>
-        <li><strong>People outside New York</strong> — only for contacts you'd already text casually. Don't cold-message someone you haven't spoken to in five years; that reads as weird and is counterproductive.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- OTHER WAYS -->
-  <section class="block" id="other">
-    <p class="section-eyebrow">alt</p>
-    <h2>Other ways to help</h2>
-    <div class="prose">
-      <p>Relational outreach isn't for everyone, and not everyone knows people in NY-12. Plenty of other useful things:</p>
-
-      <h3>If you're in NY-12 or NYC</h3>
-      <ul>
-        <li>Canvassing with the campaign</li>
-        <li>Phone or text banking off campaign-provided lists</li>
-        <li>Poll greeting on election day (Jun 23) or during early voting (Jun 13–22)</li>
-        <li>Showing up at events — visibility helps</li>
-      </ul>
-
-      <h3>If you're anywhere</h3>
-      <ul>
-        <li><strong>Donating</strong> to the campaign (FEC limits apply)</li>
-        <li><strong>Remote phone or text banking</strong> — works from anywhere</li>
-        <li><strong>Skills</strong> — design, dev, writing, ops. If you do this professionally and want to contribute, read the FEC note below first</li>
-        <li><strong>Thoughtful amplification</strong> online — substantive posts from people who know the candidate beat generic "vote for X" spam</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="block" id="join">
-    <p class="section-eyebrow">join</p>
-    <h2>Get involved</h2>
-    <div class="prose" style="margin-bottom: 24px;">
-      <p>Tell us a little about you and we'll match you to something useful — probably within a day or two. If relational outreach isn't for you, we'll find something else.</p>
-    </div>
-    <div class="cta-block">
-      <a class="btn" href="mailto:hello@alexbores.io?subject=I%20want%20to%20help%20elect%20Alex%20Bores&body=Name%3A%0A%0AWhere%20I%20live%20(NY-12%20%2F%20NYC%20%2F%20elsewhere%20in%20NY%20%2F%20out%20of%20state)%3A%0A%0ATime%20I%20can%20spend%20(a%20couple%20hours%20%2F%205%E2%80%9320%20hours%20%2F%20more)%3A%0A%0AWhat%20I%27m%20up%20for%20(pick%20any%3A%20messaging%20friends%20%2F%20canvassing%20%2F%20phone%20or%20text%20banking%20%2F%20donating%20%2F%20skills%20%2F%20other)%3A%0A%0AAnything%20else%20we%20should%20know%3A%0A">
-        Count me in →
-      </a>
-      <p class="cta-help">Opens an email with a short template. Or just write a sentence — we'll take it from there. Either way, <a href="mailto:hello@alexbores.io">hello@alexbores.io</a>.</p>
     </div>
   </section>
 
