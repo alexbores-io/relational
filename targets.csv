@@ -1,0 +1,6 @@
+Name,Phone,Email,ZIP,In NY-12?,Registration status,Lean (consensus),Has plan to vote,Has voted,Assigned volunteers,Source volunteer,Contact cap,Do not contact,DNC reason,Notes
+Jordan Reyes,555-0200,jordan.reyes@example.com,10003,true,Registered Dem,Undecided,false,Unknown,Carla Diaz,Carla Diaz,3,false,,Carla met at grad school
+Priya Shah,555-0201,priya.shah@example.com,10009,true,Registered Dem,Lean Bores,false,Unknown,"Carla Diaz, David Kim",David Kim,3,false,,Knows both Carla and David
+Michael Okafor,555-0202,,10128,true,Unregistered NY,Strong Bores,false,Unknown,David Kim,David Kim,3,false,,Needs to register by 6/13
+Sarah Lindgren,555-0203,sarah.l@example.com,10016,true,Registered Dem,Lean Against,true,Unknown,Alice Chen,Alice Chen,3,false,,Has concerns about messaging
+Tom Nakamura,,tom.n@example.com,10017,true,Registered Dem,Won't say,false,Unknown,Ben Park,Ben Park,3,true,Asked not to be contacted further,

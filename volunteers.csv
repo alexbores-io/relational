@@ -1,0 +1,6 @@
+Name,Email,Phone,Pyramid level,Based in NY,Status,Notes
+Alice Chen,alice@example.com,555-0100,L1 Spearhead,true,Active,Lead organizer; primary point of contact
+Ben Park,ben@example.com,555-0101,L2 Core,true,Active,Manages target assignments and capacity
+Carla Diaz,carla@example.com,555-0102,L3 Outreach,true,Active,
+David Kim,david@example.com,555-0103,L3 Outreach,false,Active,DC-based; only contacts close friends per out-of-NY norm
+Elena Ross,elena@example.com,555-0104,L3 Outreach,true,Paused,Traveling until early June
