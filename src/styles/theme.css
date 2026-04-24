@@ -71,7 +71,7 @@ main {
 .eyebrow a:hover { color: var(--accent); text-decoration: none; }
 .eyebrow .sep { color: var(--fg-dim); margin: 0 6px; opacity: 0.6; }
 
-/* ---------- strategy section title + tagline ---------- */
+/* ---------- strategy section title ---------- */
 .strategy-title {
   font-family: var(--font-display);
   font-weight: 700;
@@ -79,16 +79,7 @@ main {
   letter-spacing: -0.025em;
   line-height: 1.1;
   color: var(--fg);
-  margin: 0 0 6px;
-}
-.strategy-tagline {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(20px, 2.4vw, 26px);
-  letter-spacing: -0.012em;
-  line-height: 1.2;
-  color: var(--accent);
-  margin: 0 0 24px;
+  margin: 0 0 8px;
 }
 
 /* ---------- hero ---------- */
