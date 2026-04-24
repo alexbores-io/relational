@@ -3,429 +3,700 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Help elect Alex Bores — volunteer relational organizing</title>
+<title>alexbores.io — volunteer organizing for NY-12</title>
 <meta name="description" content="Volunteer-run relational organizing for Alex Bores in NY-12. If you know people in the district, you can help.">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="dark">
 
-<meta property="og:title" content="Help elect Alex Bores">
+<meta property="og:title" content="alexbores.io — help elect Alex Bores">
 <meta property="og:description" content="Volunteer-run relational organizing for NY-12. Low time commitment, real expected value.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alexbores.io/">
 <meta name="twitter:card" content="summary">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
   :root {
-    --ink: #0f172a;
-    --muted: #475569;
-    --faint: #94a3b8;
-    --line: #e2e8f0;
-    --bg: #ffffff;
-    --accent: #1e40af;
-    --accent-bg: #eff6ff;
-    --warn-bg: #fffbeb;
-    --warn-border: #fde68a;
-    --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    --bg: #0f1419;
+    --bg-card: transparent;
+    --bg-notice: rgba(220, 170, 70, 0.09);
+    --bg-elev: rgba(200, 215, 230, 0.03);
+    --border: rgba(200, 215, 230, 0.12);
+    --border-strong: rgba(200, 215, 230, 0.2);
+    --border-notice: rgba(220, 170, 70, 0.35);
+    --fg: #e4ebf2;
+    --fg-muted: rgba(200, 215, 230, 0.75);
+    --fg-dim: rgba(200, 215, 230, 0.52);
+    --accent: #64d89a;
+    --accent-soft: rgba(100, 216, 154, 0.12);
+    --eyebrow: rgba(100, 216, 154, 0.9);
+    --font-body: 'Inter', -apple-system, system-ui, sans-serif;
+    --font-display: 'Inter', -apple-system, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --card-radius: 4px;
   }
-  * { box-sizing: border-box; }
+
+  *, *::before, *::after { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
+  html, body { margin: 0; padding: 0; }
   body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
-    font-size: 17px;
-    line-height: 1.55;
-    color: var(--ink);
     background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  .wrap {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 48px 24px 96px;
-  }
-  header.site {
-    padding: 24px 0 48px;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 48px;
-  }
-  .kicker {
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--faint);
-    margin: 0 0 12px;
-  }
-  h1 {
-    font-size: 34px;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin: 0 0 16px;
-  }
-  h2 {
-    font-size: 22px;
-    letter-spacing: -0.005em;
-    margin: 48px 0 12px;
-  }
-  h3 {
-    font-size: 17px;
-    margin: 24px 0 8px;
-  }
-  p { margin: 0 0 16px; }
-  .lede { font-size: 19px; color: var(--muted); }
+  ::selection { background: var(--accent); color: #0f1419; }
+
   a {
     color: var(--accent);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    text-decoration-thickness: 1px;
-  }
-  a:hover { text-decoration-thickness: 2px; }
-  ul { padding-left: 22px; margin: 0 0 16px; }
-  li { margin-bottom: 6px; }
-  .disclaimer {
-    font-size: 13px;
-    color: var(--muted);
-    background: var(--warn-bg);
-    border: 1px solid var(--warn-border);
-    padding: 12px 16px;
-    border-radius: 8px;
-    margin-bottom: 32px;
-  }
-  .cta {
-    display: inline-block;
-    background: var(--ink);
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 6px;
     text-decoration: none;
-    font-weight: 500;
-    margin: 8px 0;
+    transition: opacity 160ms ease;
   }
-  .cta:hover { background: var(--accent); }
-  .cta-help {
-    font-size: 14px;
-    color: var(--muted);
-    margin-top: 8px;
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
-  .ways {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    margin: 0 0 32px;
+
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 28px 96px;
   }
-  @media (min-width: 560px) {
-    .ways { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (min-width: 720px) {
+    main { padding: 72px 40px 120px; }
   }
-  .way {
-    display: block;
-    padding: 16px 18px 18px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    color: var(--ink);
-    text-decoration: none;
-    background: var(--bg);
-    transition: border-color 160ms ease, background 160ms ease;
-  }
-  .way:hover {
-    border-color: var(--accent);
-    background: var(--accent-bg);
-    text-decoration: none;
-  }
-  .way-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
+
+  /* ---------- top eyebrow / masthead ---------- */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--faint);
-    margin: 0 0 6px;
+    color: var(--eyebrow);
+    margin: 0 0 36px;
   }
-  .way-title {
-    font-weight: 600;
-    font-size: 16px;
-    margin: 0 0 6px;
-    color: var(--ink);
+  .eyebrow::before {
+    content: ">_ ";
+    color: var(--accent);
+    opacity: 0.85;
   }
-  .way-desc {
-    font-size: 14px;
-    line-height: 1.45;
-    color: var(--muted);
+
+  /* ---------- hero ---------- */
+  h1.hero {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(34px, 5.4vw, 60px);
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    margin: 0 0 24px;
+    max-width: 22ch;
+    color: var(--fg);
+  }
+  h1.hero .accent { color: var(--accent); }
+
+  .lede {
+    font-family: var(--font-body);
+    font-size: clamp(16.5px, 1.5vw, 19px);
+    line-height: 1.55;
+    color: var(--fg-muted);
+    max-width: 62ch;
+    margin: 0 0 48px;
+  }
+
+  /* ---------- rule ---------- */
+  hr.rule {
+    height: 1px;
+    background: var(--border);
+    border: 0;
+    margin: 0 0 40px;
+  }
+
+  /* ---------- notice ---------- */
+  .notice {
+    border: 1px solid var(--border-notice);
+    background: var(--bg-notice);
+    padding: 16px 20px;
+    border-radius: var(--card-radius);
+    color: var(--fg-muted);
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin: 0 0 56px;
+  }
+  .notice strong { color: var(--fg); font-weight: 700; }
+
+  /* ---------- section structure ---------- */
+  section.block {
+    margin: 0 0 72px;
+  }
+  .section-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--eyebrow);
     margin: 0 0 10px;
   }
-  .way-more {
-    font-size: 13px;
+  .section-eyebrow::before {
+    content: "› ";
     color: var(--accent);
-    font-weight: 500;
+    opacity: 0.8;
   }
-  .voices {
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(24px, 2.8vw, 32px);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0 0 20px;
+    color: var(--fg);
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin: 28px 0 10px;
+  }
+
+  .prose {
+    max-width: 68ch;
+  }
+  .prose p {
+    color: var(--fg-muted);
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--fg); font-weight: 600; }
+  .prose em { color: var(--fg); font-style: italic; }
+  .prose ul {
+    margin: 8px 0 20px;
+    padding-left: 1.2rem;
+    color: var(--fg-muted);
+  }
+  .prose li { margin-bottom: 8px; line-height: 1.55; }
+  .prose li::marker { color: var(--accent); }
+  .prose a { color: var(--accent); }
+  .prose a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---------- card grid ---------- */
+  .grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 12px;
-    margin: 0 0 24px;
+    gap: 14px;
   }
-  @media (min-width: 560px) {
-    .voices { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  @media (min-width: 640px) {
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   }
-  .voice-card {
+  @media (min-width: 960px) {
+    .grid-4 { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  }
+  @media (min-width: 640px) and (max-width: 959px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  }
+
+  .card {
     display: flex;
     flex-direction: column;
-    padding: 16px 18px 18px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--bg);
-    color: var(--ink);
+    padding: 24px 22px 22px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    border-radius: var(--card-radius);
     text-decoration: none;
-    transition: border-color 160ms ease, background 160ms ease;
+    color: var(--fg);
+    transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+    min-height: 220px;
   }
-  .voice-card:hover {
+  .card:hover {
     border-color: var(--accent);
-    background: var(--accent-bg);
+    transform: translateY(-2px);
     text-decoration: none;
+    background: var(--bg-elev);
   }
-  .voice-card blockquote {
+  .card-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--eyebrow);
     margin: 0 0 12px;
-    font-size: 15px;
-    line-height: 1.45;
-    color: var(--ink);
+  }
+  .card-eyebrow::before {
+    content: "› ";
+    color: var(--accent);
+    opacity: 0.7;
+  }
+  .card h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin: 0 0 12px;
+    color: var(--fg);
+  }
+  .card p {
+    color: var(--fg-muted);
+    font-size: 14.5px;
+    line-height: 1.5;
+    margin: 0 0 18px;
+    flex: 1;
+  }
+  .card-more {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- voice cards (4-col) ---------- */
+  .voice-card { min-height: 200px; }
+  .voice-card blockquote {
+    margin: 0 0 14px;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--fg);
     quotes: "\201C" "\201D";
   }
   .voice-card blockquote::before { content: open-quote; }
   .voice-card blockquote::after { content: close-quote; }
-  .voice-card cite {
-    font-style: normal;
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.4;
+  .voice-cite {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
     margin-top: auto;
   }
-  .voice-card cite strong {
+  .voice-cite strong {
     display: block;
-    color: var(--ink);
-    font-weight: 600;
+    color: var(--fg);
+    font-family: var(--font-body);
     font-size: 14px;
-    margin-bottom: 1px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-bottom: 4px;
   }
   .voice-more {
-    background: var(--accent-bg);
-    border: 1px solid var(--accent);
-    color: var(--accent);
+    background: var(--accent-soft);
+    border-color: var(--accent);
     align-items: center;
     justify-content: center;
     text-align: center;
-    min-height: 140px;
-    gap: 8px;
+    gap: 10px;
   }
   .voice-more:hover {
     background: var(--accent);
-    color: var(--bg);
     border-color: var(--accent);
+    transform: translateY(-2px);
   }
+  .voice-more:hover .voice-more-label,
+  .voice-more:hover .voice-more-sources { color: #0f1419; }
   .voice-more-label {
-    font-weight: 600;
-    font-size: 16px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
   }
   .voice-more-sources {
-    font-size: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
     line-height: 1.4;
-    opacity: 0.8;
+    color: var(--fg-dim);
+    letter-spacing: 0.02em;
   }
+
+  /* ---------- dates block ---------- */
   .dates {
-    background: var(--accent-bg);
-    padding: 16px 20px;
-    border-radius: 8px;
-    border-left: 3px solid var(--accent);
-    margin: 16px 0 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    max-width: 720px;
   }
-  .dates dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
-  .dates dt { font-family: var(--mono); font-size: 14px; color: var(--accent); }
-  .dates dd { margin: 0; font-size: 15px; }
-  .faq { border-top: 1px solid var(--line); padding-top: 8px; }
+  @media (min-width: 640px) {
+    .dates { grid-template-columns: 1fr 1fr; }
+  }
+  .date-cell { padding: 22px 24px 24px; }
+  .date-cell + .date-cell {
+    border-top: 1px solid var(--border);
+  }
+  @media (min-width: 640px) {
+    .date-cell + .date-cell {
+      border-top: 0;
+      border-left: 1px solid var(--border);
+    }
+  }
+  .date-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  .date-label::before {
+    content: "// ";
+    opacity: 0.7;
+  }
+  .date-value {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--fg);
+    margin: 0 0 10px;
+  }
+  .date-desc {
+    color: var(--fg-muted);
+    font-size: 14.5px;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .date-desc em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+  /* ---------- CTA ---------- */
+  .cta-block {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    background: var(--bg-elev);
+    max-width: 640px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    background: var(--accent);
+    color: #0f1419;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--accent);
+    border-radius: var(--card-radius);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 160ms ease;
+  }
+  .btn:hover {
+    background: transparent;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .cta-help {
+    font-size: 13.5px;
+    color: var(--fg-dim);
+    margin: 14px 0 0;
+  }
+  .cta-help a { color: var(--accent); }
+
+  /* ---------- FAQ ---------- */
+  .faq {
+    max-width: 780px;
+    border-top: 1px solid var(--border);
+  }
   .faq details {
-    border-bottom: 1px solid var(--line);
-    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
   }
   .faq summary {
     cursor: pointer;
-    font-weight: 500;
     list-style: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.35;
+    color: var(--fg);
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    user-select: none;
   }
   .faq summary::-webkit-details-marker { display: none; }
   .faq summary::before {
-    content: "+";
-    display: inline-block;
-    width: 18px;
-    color: var(--faint);
-    font-family: var(--mono);
-  }
-  .faq details[open] summary::before { content: "−"; }
-  .faq details > *:not(summary) { margin-top: 12px; color: var(--muted); }
-  footer {
-    margin-top: 64px;
-    padding-top: 24px;
-    border-top: 1px solid var(--line);
+    content: "[+]";
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--accent);
     font-size: 13px;
-    color: var(--faint);
+    letter-spacing: 0;
+    flex-shrink: 0;
+    min-width: 2.25rem;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --ink: #e2e8f0;
-      --muted: #94a3b8;
-      --faint: #64748b;
-      --line: #1e293b;
-      --bg: #0b1220;
-      --accent: #60a5fa;
-      --accent-bg: #0f1e3d;
-      --warn-bg: #1c1508;
-      --warn-border: #44370f;
-    }
-    .cta { background: #fff; color: #0b1220; }
-    .cta:hover { background: var(--accent); color: #0b1220; }
+  .faq details[open] summary::before {
+    content: "[−]";
+  }
+  .faq summary:hover { color: var(--accent); }
+  .faq .answer {
+    padding: 12px 0 0 calc(2.25rem + 14px);
+    color: var(--fg-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 64ch;
+  }
+  .faq .answer p { margin: 0 0 10px; }
+  .faq .answer p:last-child { margin-bottom: 0; }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: 80px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--fg-dim);
+    line-height: 1.6;
+  }
+  footer::before {
+    content: "// ";
+    color: var(--accent);
+    opacity: 0.7;
   }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<header class="site">
-  <p class="kicker">alexbores.io</p>
-  <h1>If you know a few people in NY-12, you can help elect Alex Bores.</h1>
+<main>
+
+  <p class="eyebrow">alexbores.io</p>
+
+  <h1 class="hero">If you know a few people in NY-12, you can help elect <span class="accent">Alex Bores</span>.</h1>
+
   <p class="lede">A volunteer-run relational organizing effort, aimed at people in tech, EA, and adjacent communities. Low time commitment, real expected value, no weirdness.</p>
-</header>
 
-<div class="disclaimer">
-  <strong>This site is not operated by the Bores campaign.</strong> It's an independent effort by supporters doing relational organizing on his behalf. Any views here are the organizers'.
-</div>
+  <hr class="rule">
 
-<div class="ways">
-  <a class="way" href="#what">
-    <p class="way-label">Relational</p>
-    <p class="way-title">Message 3–5 friends in NY-12</p>
-    <p class="way-desc">~2–5 hrs over six weeks. The thing we most need volunteers for.</p>
-    <span class="way-more">How it works →</span>
-  </a>
-  <a class="way" href="#other">
-    <p class="way-label">Hands-on</p>
-    <p class="way-title">Canvass, phones, or poll greet</p>
-    <p class="way-desc">Best if you're in NY-12 or NYC. Remote phone/text banking works from anywhere.</p>
-    <span class="way-more">See options →</span>
-  </a>
-  <a class="way" href="#other">
-    <p class="way-label">Support</p>
-    <p class="way-title">Donate, lend skills, or amplify</p>
-    <p class="way-desc">FEC limits apply. Pro skills need to be at market rate unless genuinely volunteer.</p>
-    <span class="way-more">See details →</span>
-  </a>
-</div>
+  <div class="notice">
+    <strong>This site is not operated by the Bores campaign.</strong> It's an independent effort by supporters doing relational organizing on his behalf. Any views here are the organizers'.
+  </div>
 
-<h2>Why this matters</h2>
-<p>The NY-12 Democratic primary is on <strong>June 23, 2026</strong>. Primaries like this are typically decided by a few hundred to a few thousand votes — turnout is low, persuasion is tractable, and most people haven't thought about it yet.</p>
-<p>Collectively, our communities know <em>thousands</em> of registered Democrats in NY-12. If a few hundred of us each have a real conversation with 3–5 friends, we can plausibly move a hundred-plus votes. In a race this size, that's material.</p>
+  <!-- WAYS TO HELP TABLEAU -->
+  <section class="block">
+    <div class="grid grid-3">
+      <a class="card" href="#what">
+        <p class="card-eyebrow">Relational</p>
+        <h4>Message 3–5 friends in NY-12</h4>
+        <p>~2–5 hrs over six weeks. The thing we most need volunteers for.</p>
+        <span class="card-more">How it works →</span>
+      </a>
+      <a class="card" href="#other">
+        <p class="card-eyebrow">Hands-on</p>
+        <h4>Canvass, phones, or poll greet</h4>
+        <p>Best if you're in NY-12 or NYC. Remote phone/text banking works from anywhere.</p>
+        <span class="card-more">See options →</span>
+      </a>
+      <a class="card" href="#other">
+        <p class="card-eyebrow">Support</p>
+        <h4>Donate, lend skills, or amplify</h4>
+        <p>FEC limits apply. Pro skills need to be at market rate unless genuinely volunteer.</p>
+        <span class="card-more">See details →</span>
+      </a>
+    </div>
+  </section>
 
-<h2>Voices</h2>
-<p>On-record commentary from tech, EA, and media. Not formal endorsements — click through for context.</p>
+  <!-- WHY -->
+  <section class="block" id="why">
+    <p class="section-eyebrow">why</p>
+    <h2>Why this matters</h2>
+    <div class="prose">
+      <p>The NY-12 Democratic primary is on <strong>June 23, 2026</strong>. Primaries like this are typically decided by a few hundred to a few thousand votes — turnout is low, persuasion is tractable, and most people haven't thought about it yet.</p>
+      <p>Collectively, our communities know <em>thousands</em> of registered Democrats in NY-12. If a few hundred of us each have a real conversation with 3–5 friends, we can plausibly move a hundred-plus votes. In a race this size, that's material.</p>
+    </div>
+  </section>
 
-<div class="voices">
-  <a class="voice-card" href="https://forum.effectivealtruism.org/posts/EGxuPPKsf3CjhcdpM/consider-donating-to-alex-bores-author-of-the-raise-act" target="_blank" rel="noopener">
-    <blockquote>Alex Bores is one of the few potential politicians who has shown any care at all about existential risk from AI.</blockquote>
-    <cite><strong>Eric Neyman</strong>AI safety researcher · EA Forum · Oct 2025</cite>
-  </a>
+  <!-- VOICES -->
+  <section class="block" id="voices">
+    <p class="section-eyebrow">voices</p>
+    <h2>Voices</h2>
+    <div class="prose" style="margin-bottom: 24px;">
+      <p>On-record commentary from tech, EA, and media. Not formal endorsements — click through for context.</p>
+    </div>
+    <div class="grid grid-4">
+      <a class="card voice-card" href="https://forum.effectivealtruism.org/posts/EGxuPPKsf3CjhcdpM/consider-donating-to-alex-bores-author-of-the-raise-act" target="_blank" rel="noopener">
+        <blockquote>Alex Bores is one of the few potential politicians who has shown any care at all about existential risk from AI.</blockquote>
+        <div class="voice-cite">
+          <strong>Eric Neyman</strong>
+          EA Forum · Oct 2025
+        </div>
+      </a>
+      <a class="card voice-card" href="https://www.astralcodexten.com/p/links-for-december-2025" target="_blank" rel="noopener">
+        <blockquote>Bores has masterfully leveraged the unprecedented opposition from Big Tech into a selling point.</blockquote>
+        <div class="voice-cite">
+          <strong>Scott Alexander</strong>
+          Astral Codex Ten · Dec 2025
+        </div>
+      </a>
+      <a class="card voice-card" href="https://www.youtube.com/watch?v=znKb71kLG5c" target="_blank" rel="noopener">
+        <blockquote>Why Are Palantir and OpenAI Scared of Alex Bores? A 90-minute interview on AI policy and the RAISE Act.</blockquote>
+        <div class="voice-cite">
+          <strong>The Ezra Klein Show</strong>
+          NYT · Feb 2026
+        </div>
+      </a>
+      <a class="card voice-card voice-more" href="/voices.html" target="_blank" rel="noopener">
+        <span class="voice-more-label">More voices &amp; coverage →</span>
+        <span class="voice-more-sources">Fortune · Politico · TechCrunch · and context on each quote</span>
+      </a>
+    </div>
+  </section>
 
-  <a class="voice-card" href="https://www.astralcodexten.com/p/links-for-december-2025" target="_blank" rel="noopener">
-    <blockquote>Bores has masterfully leveraged the unprecedented opposition from Big Tech into a selling point.</blockquote>
-    <cite><strong>Scott Alexander</strong>Astral Codex Ten · Dec 2025</cite>
-  </a>
+  <!-- WHAT -->
+  <section class="block" id="what">
+    <p class="section-eyebrow">how</p>
+    <h2>What you'd actually do</h2>
+    <div class="prose">
+      <ul>
+        <li><strong>Find 3–5 people you know in NY-12.</strong> We'll show you <a href="https://reach.vote/">Reach</a>, an app that cross-references your contacts against the voter file.</li>
+        <li><strong>Message them.</strong> Text, call, whatever's natural. Tell them why you care about Bores.</li>
+        <li><strong>Ask if they'll vote.</strong> Help them make a concrete plan — "I'll early-vote Saturday morning" beats "yeah, probably."</li>
+        <li><strong>Follow up.</strong> Once closer to election day, a short check-in.</li>
+        <li><strong>Log it</strong> so we can tell who's already been contacted — the goal is one friend reaching out, not ten.</li>
+      </ul>
+      <p>Realistically: ~2–5 hours across six weeks. You don't have to do anything aversive. If you want to do more, we'll find things.</p>
+    </div>
+  </section>
 
-  <a class="voice-card" href="https://www.youtube.com/watch?v=znKb71kLG5c" target="_blank" rel="noopener">
-    <blockquote>Why Are Palantir and OpenAI Scared of Alex Bores? A 90-minute interview on AI policy and the RAISE Act.</blockquote>
-    <cite><strong>The Ezra Klein Show</strong>New York Times · Feb 2026</cite>
-  </a>
+  <!-- DATES -->
+  <section class="block" id="dates">
+    <p class="section-eyebrow">when</p>
+    <h2>Key dates</h2>
+    <div class="dates">
+      <div class="date-cell">
+        <p class="date-label">Jun 13 · Saturday</p>
+        <p class="date-value">Registration deadline</p>
+        <p class="date-desc">Last day to register. Early voting <em>also</em> begins.</p>
+      </div>
+      <div class="date-cell">
+        <p class="date-label">Jun 23 · Tuesday</p>
+        <p class="date-value">Election day</p>
+        <p class="date-desc">Polls open. Primary <em>election day</em>.</p>
+      </div>
+    </div>
+    <div class="prose" style="margin-top: 20px;">
+      <p>If you want to contact someone who isn't registered to vote in New York, they need to register by <strong>June 13</strong>. It's too late to re-register with a party affiliation, so outreach should focus on current registered Democrats and unregistered New Yorkers.</p>
+    </div>
+  </section>
 
-  <a class="voice-card voice-more" href="/voices.html" target="_blank" rel="noopener">
-    <span class="voice-more-label">More voices &amp; coverage →</span>
-    <span class="voice-more-sources">Fortune · Politico · TechCrunch · and context on each quote</span>
-  </a>
-</div>
+  <!-- WHO -->
+  <section class="block">
+    <p class="section-eyebrow">who</p>
+    <h2>Who should reach out to friends?</h2>
+    <div class="prose">
+      <ul>
+        <li><strong>People in New York City</strong> — more latitude, it's not weird to organize politically in your own city.</li>
+        <li><strong>People outside New York</strong> — only for contacts you'd already text casually. Don't cold-message someone you haven't spoken to in five years; that reads as weird and is counterproductive.</li>
+      </ul>
+    </div>
+  </section>
 
-<h2>What you'd actually do</h2>
-<ul>
-  <li><strong>Find 3–5 people you know in NY-12.</strong> We'll show you <a href="https://reach.vote/">Reach</a>, an app that cross-references your contacts against the voter file.</li>
-  <li><strong>Message them.</strong> Text, call, whatever's natural. Tell them why you care about Bores.</li>
-  <li><strong>Ask if they'll vote.</strong> Help them make a concrete plan — "I'll early-vote Saturday morning" beats "yeah, probably."</li>
-  <li><strong>Follow up.</strong> Once closer to election day, a short check-in.</li>
-  <li><strong>Log it</strong> so we can tell who's already been contacted — the goal is one friend reaching out, not ten.</li>
-</ul>
-<p>Realistically: ~2–5 hours across six weeks. You don't have to do anything aversive. If you want to do more, we'll find things.</p>
+  <!-- OTHER WAYS -->
+  <section class="block" id="other">
+    <p class="section-eyebrow">alt</p>
+    <h2>Other ways to help</h2>
+    <div class="prose">
+      <p>Relational outreach isn't for everyone, and not everyone knows people in NY-12. Plenty of other useful things:</p>
 
-<h2>Key dates</h2>
-<div class="dates">
-  <dl>
-    <dt>Jun 13</dt><dd>Voter registration deadline <em>and</em> early voting begins</dd>
-    <dt>Jun 23</dt><dd>Primary election day</dd>
-  </dl>
-</div>
-<p>If you want to contact someone who isn't registered to vote in New York, they need to register by <strong>June 13</strong>. It's too late to re-register with a party affiliation, so outreach should focus on current registered Democrats and unregistered New Yorkers.</p>
+      <h3>If you're in NY-12 or NYC</h3>
+      <ul>
+        <li>Canvassing with the campaign</li>
+        <li>Phone or text banking off campaign-provided lists</li>
+        <li>Poll greeting on election day (Jun 23) or during early voting (Jun 13–22)</li>
+        <li>Showing up at events — visibility helps</li>
+      </ul>
 
-<h2>Who should reach out to friends?</h2>
-<ul>
-  <li><strong>People in New York City</strong> — more latitude, it's not weird to organize politically in your own city.</li>
-  <li><strong>People outside New York</strong> — only for contacts you'd already text casually. Don't cold-message someone you haven't spoken to in five years; that reads as weird and is counterproductive.</li>
-</ul>
+      <h3>If you're anywhere</h3>
+      <ul>
+        <li><strong>Donating</strong> to the campaign (FEC limits apply)</li>
+        <li><strong>Remote phone or text banking</strong> — works from anywhere</li>
+        <li><strong>Skills</strong> — design, dev, writing, ops. If you do this professionally and want to contribute, read the FEC note below first</li>
+        <li><strong>Thoughtful amplification</strong> online — substantive posts from people who know the candidate beat generic "vote for X" spam</li>
+      </ul>
+    </div>
+  </section>
 
-<h2>Other ways to help</h2>
-<p>Relational outreach isn't for everyone, and not everyone knows people in NY-12. Plenty of other useful things:</p>
+  <!-- CTA -->
+  <section class="block" id="join">
+    <p class="section-eyebrow">join</p>
+    <h2>Get involved</h2>
+    <div class="prose" style="margin-bottom: 24px;">
+      <p>Tell us a little about you and we'll match you to something useful — probably within a day or two. If relational outreach isn't for you, we'll find something else.</p>
+    </div>
+    <div class="cta-block">
+      <a class="btn" href="mailto:hello@alexbores.io?subject=I%20want%20to%20help%20elect%20Alex%20Bores&body=Name%3A%0A%0AWhere%20I%20live%20(NY-12%20%2F%20NYC%20%2F%20elsewhere%20in%20NY%20%2F%20out%20of%20state)%3A%0A%0ATime%20I%20can%20spend%20(a%20couple%20hours%20%2F%205%E2%80%9320%20hours%20%2F%20more)%3A%0A%0AWhat%20I%27m%20up%20for%20(pick%20any%3A%20messaging%20friends%20%2F%20canvassing%20%2F%20phone%20or%20text%20banking%20%2F%20donating%20%2F%20skills%20%2F%20other)%3A%0A%0AAnything%20else%20we%20should%20know%3A%0A">
+        Count me in →
+      </a>
+      <p class="cta-help">Opens an email with a short template. Or just write a sentence — we'll take it from there. Either way, <a href="mailto:hello@alexbores.io">hello@alexbores.io</a>.</p>
+    </div>
+  </section>
 
-<h3>If you're in NY-12 or NYC</h3>
-<ul>
-  <li>Canvassing with the campaign</li>
-  <li>Phone or text banking off campaign-provided lists</li>
-  <li>Poll greeting on election day (Jun 23) or during early voting (Jun 13–22)</li>
-  <li>Showing up at events — visibility helps</li>
-</ul>
+  <!-- FAQ -->
+  <section class="block" id="faq">
+    <p class="section-eyebrow">faq</p>
+    <h2>Concerns, addressed</h2>
+    <div class="faq">
+      <details>
+        <summary>Is this legal / okay with campaign finance rules?</summary>
+        <div class="answer">
+          <p>Volunteer time is fine. Spending money on this effort (merch, paid ads, etc.) can count as an in-kind contribution and needs to be reported — talk to us before spending. Professional services (design, engineering, etc.) done for the campaign need to be at market rate unless you do it as a genuine volunteer for something unrelated to your profession. None of this is legal advice; if you have a specific question, ask a lawyer.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What's the campaign's involvement?</summary>
+        <div class="answer">
+          <p>The campaign provides guidance on messaging and best practices. They don't manage this effort, and we don't speak for them.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Can I talk to the media about this?</summary>
+        <div class="answer">
+          <p>Please don't, by default. If you're getting press questions, forward them to us and we'll connect you to someone appropriate.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What if Bores loses?</summary>
+        <div class="answer">
+          <p>He might — this is a competitive primary. We're being upfront about that. The case for trying is that a few hours of your time has a real probability of moving the outcome, and either way you'll have had honest conversations with people you care about.</p>
+        </div>
+      </details>
+      <details>
+        <summary>How do you keep contacts from being messaged by ten different people?</summary>
+        <div class="answer">
+          <p>There's a shared tracker of who's reached out to whom. When you sign up, you get assigned specific contacts and we coordinate to avoid the pile-on problem.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What if I don't want to message friends?</summary>
+        <div class="answer">
+          <p>Totally fine — plenty of other ways to help, see the list above. Mention it in the email and we'll skip straight to something else.</p>
+        </div>
+      </details>
+    </div>
+  </section>
 
-<h3>If you're anywhere</h3>
-<ul>
-  <li><strong>Donating</strong> to the campaign (FEC limits apply)</li>
-  <li><strong>Remote phone or text banking</strong> — works from anywhere</li>
-  <li><strong>Skills</strong> — design, dev, writing, ops. If you do this professionally and want to contribute, read the FEC note below first</li>
-  <li><strong>Thoughtful amplification</strong> online — substantive posts from people who know the candidate beat generic "vote for X" spam</li>
-</ul>
+  <footer>
+    Paid for by nobody — this is an independent volunteer effort. Not authorized by any candidate or candidate's committee.
+  </footer>
 
-<h2>Get involved</h2>
-<p>Tell us a little about you and we'll match you to something useful — probably within a day or two. If relational outreach isn't for you, we'll find something else.</p>
-<p>
-  <a class="cta" href="mailto:hello@alexbores.io?subject=I%20want%20to%20help%20elect%20Alex%20Bores&body=Name%3A%0A%0AWhere%20I%20live%20(NY-12%20%2F%20NYC%20%2F%20elsewhere%20in%20NY%20%2F%20out%20of%20state)%3A%0A%0ATime%20I%20can%20spend%20(a%20couple%20hours%20%2F%205%E2%80%9320%20hours%20%2F%20more)%3A%0A%0AWhat%20I%27m%20up%20for%20(pick%20any%3A%20messaging%20friends%20%2F%20canvassing%20%2F%20phone%20or%20text%20banking%20%2F%20donating%20%2F%20skills%20%2F%20other)%3A%0A%0AAnything%20else%20we%20should%20know%3A%0A">Count me in →</a>
-</p>
-<p class="cta-help">Opens an email with a short template. Or just write a sentence — we'll ask from there.</p>
-
-<h2>Concerns, addressed</h2>
-<div class="faq">
-  <details>
-    <summary>Is this legal / okay with campaign finance rules?</summary>
-    <p>Volunteer time is fine. Spending money on this effort (merch, paid ads, etc.) can count as an in-kind contribution and needs to be reported — talk to us before spending. Professional services (design, engineering, etc.) done for the campaign need to be at market rate unless you do it as a genuine volunteer for something unrelated to your profession. None of this is legal advice; if you have a specific question, ask a lawyer.</p>
-  </details>
-  <details>
-    <summary>What's the campaign's involvement?</summary>
-    <p>The campaign provides guidance on messaging and best practices. They don't manage this effort, and we don't speak for them.</p>
-  </details>
-  <details>
-    <summary>Can I talk to the media about this?</summary>
-    <p>Please don't, by default. If you're getting press questions, forward them to us and we'll connect you to someone appropriate.</p>
-  </details>
-  <details>
-    <summary>What if Bores loses?</summary>
-    <p>He might — this is a competitive primary. We're being upfront about that. The case for trying is that a few hours of your time has a real probability of moving the outcome, and either way you'll have had honest conversations with people you care about.</p>
-  </details>
-  <details>
-    <summary>How do you keep contacts from being messaged by ten different people?</summary>
-    <p>There's a shared tracker of who's reached out to whom. When you sign up, you get assigned specific contacts and we coordinate to avoid the pile-on problem.</p>
-  </details>
-  <details>
-    <summary>What if I don't want to message friends?</summary>
-    <p>Totally fine — plenty of other ways to help, see the list above. Mention it in the email and we'll skip straight to something else.</p>
-  </details>
-</div>
-
-<footer>
-  Paid for by nobody — this is an independent volunteer effort. Not authorized by any candidate or candidate's committee.
-</footer>
-
-</div>
+</main>
 </body>
 </html>
