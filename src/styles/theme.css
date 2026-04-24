@@ -709,6 +709,54 @@ h4 {
 }
 .date-desc em { color: var(--accent); font-style: normal; font-weight: 600; }
 
+/* ---------- numbered action list ---------- */
+.action-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  counter-reset: action;
+}
+.action-list > li {
+  counter-increment: action;
+  padding: 18px 0 18px 56px;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+.action-list > li:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.action-list > li::before {
+  content: counter(action, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 20px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+.action-list h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--fg);
+  margin: 0 0 6px;
+  letter-spacing: -0.005em;
+}
+.action-list p {
+  color: var(--fg-muted);
+  font-size: 15.5px;
+  line-height: 1.55;
+  margin: 0;
+}
+.action-list a { color: var(--accent); }
+.action-list a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* ---------- CTA ---------- */
 .cta-block {
   padding: 28px;
