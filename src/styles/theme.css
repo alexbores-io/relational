@@ -112,6 +112,27 @@ hr.rule {
   margin: 0 0 40px;
 }
 
+/* ---------- TODO banner ---------- */
+.todo-banner {
+  background: var(--bg-elev);
+  border: 1px dashed var(--border-notice);
+  padding: 16px 20px;
+  border-radius: var(--card-radius);
+  color: var(--fg-muted);
+  font-size: 14.5px;
+  line-height: 1.55;
+  margin: 0 0 32px;
+}
+.todo-banner::before {
+  content: "// TODO ";
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+}
+.todo-banner strong { color: var(--fg); font-weight: 700; }
+
 /* ---------- see-also line ---------- */
 .see-also {
   font-family: var(--font-body);
