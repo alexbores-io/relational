@@ -1,0 +1,213 @@
+---
+import Base from '../layouts/Base.astro';
+import Footer from '../components/Footer.astro';
+import VoiceCard from '../components/VoiceCard.astro';
+import { getCollection } from 'astro:content';
+
+const allVoices = await getCollection('voices');
+const indexVoices = allVoices
+  .filter((v) => v.data.featureOnIndex)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const mailtoHref =
+  'mailto:hello@alexbores.io?subject=I%20want%20to%20help%20elect%20Alex%20Bores' +
+  '&body=Name%3A%0A%0A' +
+  'Where%20I%20live%20(NY-12%20%2F%20NYC%20%2F%20elsewhere%20in%20NY%20%2F%20out%20of%20state)%3A%0A%0A' +
+  'Time%20I%20can%20spend%20(a%20couple%20hours%20%2F%205%E2%80%9320%20hours%20%2F%20more)%3A%0A%0A' +
+  'What%20I%27m%20up%20for%20(pick%20any%3A%20messaging%20friends%20%2F%20canvassing%20%2F%20phone%20or%20text%20banking%20%2F%20donating%20%2F%20skills%20%2F%20other)%3A%0A%0A' +
+  'Anything%20else%20we%20should%20know%3A%0A';
+---
+<Base title="alexbores.io — volunteer organizing for NY-12">
+
+  <p class="eyebrow">alexbores.io</p>
+
+  <h1 class="hero">
+    If you know a few people in NY-12, you can help elect <span class="accent">Alex Bores</span>.
+  </h1>
+
+  <p class="lede">
+    A volunteer-run relational organizing effort, aimed at people in tech, EA, and adjacent communities. Low time commitment, real expected value, no weirdness.
+  </p>
+
+  <hr class="rule" />
+
+  <div class="notice">
+    <strong>This site is not operated by the Bores campaign.</strong> It's an independent effort by supporters doing relational organizing on his behalf. Any views here are the organizers'.
+  </div>
+
+  <!-- WHY (includes voices) -->
+  <section class="block" id="why">
+    <p class="section-eyebrow">why</p>
+    <h2>Why this matters</h2>
+    <div class="prose">
+      <p>The NY-12 Democratic primary is on <strong>June 23, 2026</strong>. Primaries like this are typically decided by a few hundred to a few thousand votes — turnout is low, persuasion is tractable, and most people haven't thought about it yet.</p>
+      <p>Collectively, our communities know <em>thousands</em> of registered Democrats in NY-12. If a few hundred of us each have a real conversation with 3–5 friends, we can plausibly move a hundred-plus votes. In a race this size, that's material.</p>
+    </div>
+
+    <h3>Voices</h3>
+    <div class="prose" style="margin-bottom: 20px;">
+      <p>On-record commentary from tech, EA, and media. Not formal endorsements — click through for context.</p>
+    </div>
+    <div class="grid grid-2">
+      {indexVoices.map((v) => (
+        <VoiceCard
+          quote={v.data.quote}
+          indexText={v.data.indexText}
+          name={v.data.name}
+          publication={v.data.publication}
+          dateShort={v.data.dateShort}
+          url={v.data.url}
+        />
+      ))}
+      <a class="card voice-card voice-more" href="/voices" target="_blank" rel="noopener">
+        <span class="voice-more-label">More voices &amp; coverage →</span>
+        <span class="voice-more-sources">Fortune · Politico · TechCrunch · and context on each quote</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- WAYS TO HELP -->
+  <section class="block" id="help">
+    <p class="section-eyebrow">how to help</p>
+    <h2>Ways to help</h2>
+
+    <div class="grid grid-3">
+      <a class="card" href="#relational">
+        <p class="card-eyebrow">Relational</p>
+        <h4>Message 3–5 friends in NY-12</h4>
+        <p>~2–5 hrs over six weeks. The thing we most need volunteers for.</p>
+        <span class="card-more">How it works →</span>
+      </a>
+      <a class="card" href="#other-local">
+        <p class="card-eyebrow">Hands-on</p>
+        <h4>Canvass, phones, or poll greet</h4>
+        <p>Best if you're in NY-12 or NYC. Remote phone/text banking works from anywhere.</p>
+        <span class="card-more">See options →</span>
+      </a>
+      <a class="card" href="#other-anywhere">
+        <p class="card-eyebrow">Support</p>
+        <h4>Donate, lend skills, or amplify</h4>
+        <p>FEC limits apply. Pro skills need to be at market rate unless genuinely volunteer.</p>
+        <span class="card-more">See details →</span>
+      </a>
+    </div>
+
+    <h3 id="relational">The main ask: relational organizing</h3>
+    <div class="prose">
+      <p>Roughly two to five hours of your time across six weeks, doing the following:</p>
+      <ul>
+        <li><strong>Find 3–5 people you know in NY-12.</strong> We'll show you <a href="https://reach.vote/">Reach</a>, an app that cross-references your contacts against the voter file.</li>
+        <li><strong>Message them.</strong> Text, call, whatever's natural. Tell them why you care about Bores.</li>
+        <li><strong>Ask if they'll vote.</strong> Help them make a concrete plan — "I'll early-vote Saturday morning" beats "yeah, probably."</li>
+        <li><strong>Follow up.</strong> Once closer to election day, a short check-in.</li>
+        <li><strong>Log it</strong> so we can tell who's already been contacted — the goal is one friend reaching out, not ten.</li>
+      </ul>
+      <p>You don't have to do anything aversive. If you want to do more, we'll find things.</p>
+
+      <h4>Who should reach out to friends?</h4>
+      <ul>
+        <li><strong>People in New York City</strong> — more latitude, it's not weird to organize politically in your own city.</li>
+        <li><strong>People outside New York</strong> — only for contacts you'd already text casually. Don't cold-message someone you haven't spoken to in five years; that reads as weird and is counterproductive.</li>
+      </ul>
+    </div>
+
+    <h3 id="other">Other ways to help</h3>
+    <div class="prose">
+      <p>Relational outreach isn't for everyone, and not everyone knows people in NY-12. Plenty of other useful things:</p>
+
+      <h4 id="other-local">If you're in NY-12 or NYC</h4>
+      <ul>
+        <li>Canvassing with the campaign</li>
+        <li>Phone or text banking off campaign-provided lists</li>
+        <li>Poll greeting on election day (Jun 23) or during early voting (Jun 13–22)</li>
+        <li>Showing up at events — visibility helps</li>
+      </ul>
+
+      <h4 id="other-anywhere">If you're anywhere</h4>
+      <ul>
+        <li><strong>Donating</strong> to the campaign (FEC limits apply)</li>
+        <li><strong>Remote phone or text banking</strong> — works from anywhere</li>
+        <li><strong>Skills</strong> — design, dev, writing, ops. If you do this professionally and want to contribute, read the FEC note below first</li>
+        <li><strong>Thoughtful amplification</strong> online — substantive posts from people who know the candidate beat generic "vote for X" spam</li>
+      </ul>
+    </div>
+
+    <h3 id="join">Get involved</h3>
+    <div class="prose" style="margin-bottom: 24px;">
+      <p>Tell us a little about you and we'll match you to something useful — probably within a day or two. Relational outreach, something else, we'll figure it out.</p>
+    </div>
+    <div class="cta-block">
+      <a class="btn" href={mailtoHref}>
+        Count me in →
+      </a>
+      <p class="cta-help">Opens an email with a short template. Or just write a sentence — we'll take it from there. Either way, <a href="mailto:hello@alexbores.io">hello@alexbores.io</a>.</p>
+    </div>
+  </section>
+
+  <!-- DATES -->
+  <section class="block" id="dates">
+    <p class="section-eyebrow">when</p>
+    <h2>Key dates</h2>
+    <div class="dates">
+      <div class="date-cell">
+        <p class="date-label">Jun 13 · Saturday</p>
+        <p class="date-value">Registration deadline</p>
+        <p class="date-desc">Last day to register. Early voting <em>also</em> begins.</p>
+      </div>
+      <div class="date-cell">
+        <p class="date-label">Jun 23 · Tuesday</p>
+        <p class="date-value">Election day</p>
+        <p class="date-desc">Polls open. Primary <em>election day</em>.</p>
+      </div>
+    </div>
+    <div class="prose" style="margin-top: 20px;">
+      <p>If you want to contact someone who isn't registered to vote in New York, they need to register by <strong>June 13</strong>. It's too late to re-register with a party affiliation, so outreach should focus on current registered Democrats and unregistered New Yorkers.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" id="faq">
+    <p class="section-eyebrow">faq</p>
+    <h2>Concerns, addressed</h2>
+    <div class="faq">
+      <details>
+        <summary>Is this legal / okay with campaign finance rules?</summary>
+        <div class="answer">
+          <p>Volunteer time is fine. Spending money on this effort (merch, paid ads, etc.) can count as an in-kind contribution and needs to be reported — talk to us before spending. Professional services (design, engineering, etc.) done for the campaign need to be at market rate unless you do it as a genuine volunteer for something unrelated to your profession. None of this is legal advice; if you have a specific question, ask a lawyer.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What's the campaign's involvement?</summary>
+        <div class="answer">
+          <p>The campaign provides guidance on messaging and best practices. They don't manage this effort, and we don't speak for them.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Can I talk to the media about this?</summary>
+        <div class="answer">
+          <p>Please don't, by default. If you're getting press questions, forward them to us and we'll connect you to someone appropriate.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What if Bores loses?</summary>
+        <div class="answer">
+          <p>He might — this is a competitive primary. We're being upfront about that. The case for trying is that a few hours of your time has a real probability of moving the outcome, and either way you'll have had honest conversations with people you care about.</p>
+        </div>
+      </details>
+      <details>
+        <summary>How do you keep contacts from being messaged by ten different people?</summary>
+        <div class="answer">
+          <p>There's a shared tracker of who's reached out to whom. When you sign up, you get assigned specific contacts and we coordinate to avoid the pile-on problem.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What if I don't want to message friends?</summary>
+        <div class="answer">
+          <p>Totally fine — plenty of other ways to help, see the list above. Mention it in the email and we'll skip straight to something else.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <Footer />
+</Base>

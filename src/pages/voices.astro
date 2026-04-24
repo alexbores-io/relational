@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+const allVoices = await getCollection('voices');
+const sorted = allVoices.sort((a, b) => a.data.order - b.data.order);
+const commentary = sorted.filter((v) => v.data.category === 'commentary');
+const press = sorted.filter((v) => v.data.category === 'press');
+
+// Pre-render each entry's markdown body
+const rendered = await Promise.all(
+  sorted.map(async (v) => {
+    const { Content } = await render(v);
+    return { entry: v, Content };
+  })
+);
+const byId = new Map(rendered.map((r) => [r.entry.id, r]));
+---
+<Base
+  title="Voices & coverage — alexbores.io"
+  description="On-record commentary and press coverage of the Alex Bores 2026 congressional campaign, with citations."
+  ogUrl="https://alexbores.io/voices"
+  ogType="article"
+>
+
+  <p class="eyebrow"><a href="/">alexbores.io</a> <span class="sep">/</span> voices</p>
+
+  <h1 class="hero" style="font-size: clamp(30px, 4vw, 44px); margin: 0 0 16px;">Voices &amp; coverage</h1>
+
+  <p class="lede">
+    On-record commentary about the Bores campaign from tech and EA circles, and press coverage of the race. Each entry links to the primary source. <strong>Nothing here is a formal endorsement</strong> — these are quotations and links, presented so readers can judge the signal for themselves.
+  </p>
+
+  <div class="notice">
+    <strong>This site is not operated by the Bores campaign.</strong> Quotations are reproduced under fair use for commentary and attribution. No person, publication, or organization listed here has authored or reviewed this page.
+  </div>
+
+  <section class="block">
+    <p class="section-eyebrow">commentary</p>
+    <h2 style="margin-bottom: 24px;">Commentary</h2>
+    {commentary.map((v) => {
+      const r = byId.get(v.id);
+      if (!r) return null;
+      const { Content } = r;
+      return (
+        <section class="entry">
+          <p class="entry-meta">{v.data.name} · {v.data.publication} · {v.data.dateLong}</p>
+          <h3>{v.data.title}</h3>
+          {v.data.quote && <blockquote>{v.data.quote}</blockquote>}
+          <Content />
+          <p class="entry-source">
+            Source → <a href={v.data.url}>{v.data.title}</a>
+            {v.data.extraLinks?.map((link) => (
+              <Fragment> · <a href={link.url}>{link.label}</a></Fragment>
+            ))}
+          </p>
+        </section>
+      );
+    })}
+  </section>
+
+  <section class="block">
+    <p class="section-eyebrow">press coverage</p>
+    <h2 style="margin-bottom: 24px;">Press coverage</h2>
+    {press.map((v) => {
+      const r = byId.get(v.id);
+      if (!r) return null;
+      const { Content } = r;
+      return (
+        <section class="entry">
+          <p class="entry-meta">{v.data.publication} · {v.data.dateLong}</p>
+          <h3>{v.data.title}</h3>
+          <Content />
+          <p class="entry-source">
+            Source → <a href={v.data.url}>{v.data.title}</a>
+          </p>
+        </section>
+      );
+    })}
+  </section>
+
+  <section class="block">
+    <p class="section-eyebrow">formal endorsements</p>
+    <h2>Formal endorsements</h2>
+    <div class="prose">
+      <p>Labor, electeds, and advocacy organizations who have formally endorsed Bores are listed on the campaign's own endorsements page: <a href="https://www.alexbores.nyc/endorsements/">alexbores.nyc/endorsements</a>. Notable among them: DC 37 (NYC's largest public-sector union), former Rep. Carolyn Maloney, StreetsPAC, and Open NY.</p>
+    </div>
+  </section>
+
+  <p class="backlink">← <a href="/">back to alexbores.io</a></p>
+
+  <Footer note="Paid for by nobody — this is an independent volunteer effort. Not authorized by any candidate or candidate's committee. Quotations reproduced under fair use." />
+</Base>

@@ -1,0 +1,23 @@
+---
+interface Props {
+  quote?: string;
+  indexText: string;
+  name: string;
+  publication: string;
+  dateShort: string;
+  url: string;
+}
+
+const { quote, indexText, name, publication, dateShort, url } = Astro.props;
+---
+<a class="card voice-card" href={url} target="_blank" rel="noopener">
+  {quote ? (
+    <blockquote>{quote}</blockquote>
+  ) : (
+    <p class="voice-desc">{indexText}</p>
+  )}
+  <div class="voice-cite">
+    <strong>{name}</strong>
+    {publication} · {dateShort}
+  </div>
+</a>

@@ -1,0 +1,10 @@
+---
+interface Props {
+  note?: string;
+}
+
+const {
+  note = "Paid for by nobody — this is an independent volunteer effort. Not authorized by any candidate or candidate's committee.",
+} = Astro.props;
+---
+<footer>{note}</footer>

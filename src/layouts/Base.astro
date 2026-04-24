@@ -1,0 +1,45 @@
+---
+import '../styles/theme.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogUrl?: string;
+  ogType?: string;
+}
+
+const {
+  title,
+  description = 'Volunteer-run relational organizing for Alex Bores in NY-12. If you know people in the district, you can help.',
+  ogUrl = 'https://alexbores.io/',
+  ogType = 'website',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="dark" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={ogUrl} />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
