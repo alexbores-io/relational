@@ -1,16 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import Footer from '../components/Footer.astro';
-import VoiceCard from '../components/VoiceCard.astro';
-import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import attackJan30 from '../assets/attack-text-jan30.jpg';
 import attackFeb24 from '../assets/attack-text-feb24.jpg';
-
-const allVoices = await getCollection('voices');
-const indexVoices = allVoices
-  .filter((v) => v.data.featureOnIndex)
-  .sort((a, b) => a.data.order - b.data.order);
 
 const mailtoHref =
   'mailto:hello@alexbores.io?subject=I%20want%20to%20help%20elect%20Alex%20Bores' +
@@ -36,7 +29,7 @@ const mailtoHref =
         <a href="#strategy" data-section="strategy">
           <span class="s-tree">├──</span>
           <span class="s-num">02</span>
-          <span class="s-file">the-strategy.md</span>
+          <span class="s-file">our-strategy.md</span>
         </a>
         <ol class="sidebar-sublist">
           <li>
@@ -88,7 +81,7 @@ const mailtoHref =
         <a href="#strategy">
           <span class="toc-tree">├──</span>
           <span class="toc-num">02</span>
-          <span class="toc-file">the-strategy.md</span>
+          <span class="toc-file">our-strategy.md</span>
           <span class="toc-desc">The math, and the plan.</span>
         </a>
         <ol class="toc-sublist">
@@ -137,32 +130,15 @@ const mailtoHref =
       </figure>
     </div>
 
-    <h3>Voices</h3>
-    <div class="prose" style="margin-bottom: 20px;">
-      <p>On-record commentary from tech, EA, and media. Not formal endorsements — click through for context.</p>
-    </div>
-    <div class="grid grid-2">
-      {indexVoices.map((v) => (
-        <VoiceCard
-          quote={v.data.quote}
-          indexText={v.data.indexText}
-          name={v.data.name}
-          publication={v.data.publication}
-          dateShort={v.data.dateShort}
-          url={v.data.url}
-        />
-      ))}
-      <a class="card voice-card voice-more" href="/voices" target="_blank" rel="noopener">
-        <span class="voice-more-label">More voices &amp; coverage →</span>
-        <span class="voice-more-sources">Fortune · Politico · TechCrunch · and context on each quote</span>
-      </a>
-    </div>
+    <p class="see-also">
+      See also <a href="/voices">voices.md</a> — press coverage and on-record commentary from Eric Neyman, Scott Alexander, Ezra Klein, and more.
+    </p>
   </section>
 
-  <!-- THE STRATEGY -->
+  <!-- OUR STRATEGY -->
   <section class="block" id="strategy">
-    <p class="section-eyebrow">the strategy</p>
-    <h2>The strategy</h2>
+    <p class="section-eyebrow">our strategy</p>
+    <h2>Our strategy: win knowledge workers.</h2>
     <div class="prose">
       <p>The NY-12 Democratic primary is on <strong>June 23, 2026</strong>. Primaries like this are typically decided by a few hundred to a few thousand votes — turnout is low, persuasion is tractable, and most people haven't thought about it yet.</p>
       <p>Collectively, our communities know <em>thousands</em> of registered Democrats in NY-12. If a few hundred of us each have a real conversation with 3–5 friends, we can plausibly move a hundred-plus votes. In a race this size, that's material.</p>
