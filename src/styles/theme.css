@@ -342,9 +342,10 @@ sup.cite a:hover {
 .toc-list > li { margin: 0; }
 .toc-list > li + li { margin-top: 2px; }
 
-.toc-list > li > a {
+.toc-list > li > a,
+.toc-sublist > li > a {
   display: grid;
-  grid-template-columns: 3.5em 2em minmax(0, 17em) minmax(0, 1fr);
+  grid-template-columns: 5.5em 2em minmax(0, 17em) minmax(0, 1fr);
   align-items: baseline;
   gap: 10px;
   padding: 7px 0 7px 12px;
@@ -362,17 +363,8 @@ sup.cite a:hover {
 }
 .toc-sublist > li { margin: 0; }
 .toc-sublist > li > a {
-  display: grid;
-  grid-template-columns: 5.5em minmax(0, 13em) minmax(0, 1fr);
-  align-items: baseline;
-  gap: 10px;
   padding: 6px 0 6px 12px;
-  border-left: 2px solid transparent;
-  font-family: var(--font-mono);
   font-size: 13.5px;
-  color: var(--fg-muted);
-  text-decoration: none;
-  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
 }
 .toc-list a:hover,
 .toc-sublist a:hover {
