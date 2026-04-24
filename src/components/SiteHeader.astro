@@ -1,0 +1,34 @@
+---
+interface Props {
+  current?: 'relational' | 'posts' | 'voices';
+  breadcrumb?: string;
+}
+
+const { current, breadcrumb } = Astro.props;
+
+const links = [
+  { key: 'relational', href: '/relational', label: 'relational-organizing.md' },
+  { key: 'posts',      href: '/posts',      label: 'posts.md' },
+  { key: 'voices',     href: '/voices',     label: 'voices.md' },
+] as const;
+---
+<header class="site-header">
+  <p class="eyebrow">
+    {breadcrumb ? (
+      <><a href="/">alexbores.io</a> <span class="sep">/</span> {breadcrumb}</>
+    ) : (
+      <>alexbores.io</>
+    )}
+  </p>
+  <nav class="site-nav" aria-label="Site navigation">
+    {links.map((l) => (
+      <a
+        href={l.href}
+        class={current === l.key ? 'current' : ''}
+        aria-current={current === l.key ? 'page' : undefined}
+      >
+        {l.label}
+      </a>
+    ))}
+  </nav>
+</header>

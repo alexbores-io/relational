@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Footer from '../components/Footer.astro';
-import SiteNav from '../components/SiteNav.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 import { getCollection, render } from 'astro:content';
 
 const allVoices = await getCollection('voices');
@@ -25,8 +25,7 @@ const byId = new Map(rendered.map((r) => [r.entry.id, r]));
   ogType="article"
 >
 
-  <p class="eyebrow"><a href="/">alexbores.io</a> <span class="sep">/</span> voices</p>
-  <SiteNav current="voices" />
+  <SiteHeader current="voices" breadcrumb="voices" />
 
   <h1 class="hero" style="font-size: clamp(30px, 4vw, 44px); margin: 0 0 16px;">Voices &amp; coverage</h1>
 

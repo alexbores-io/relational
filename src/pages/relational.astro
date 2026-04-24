@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Footer from '../components/Footer.astro';
-import SiteNav from '../components/SiteNav.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 ---
 <Base
   title="Relational organizing: preparation — alexbores.io"
@@ -10,8 +10,7 @@ import SiteNav from '../components/SiteNav.astro';
   ogType="article"
 >
 
-  <p class="eyebrow"><a href="/">alexbores.io</a> <span class="sep">/</span> relational-organizing</p>
-  <SiteNav current="relational" />
+  <SiteHeader current="relational" breadcrumb="relational-organizing" />
 
   <h1 class="hero" style="font-size: clamp(30px, 4vw, 44px); margin: 0 0 16px;">Relational organizing</h1>
 
