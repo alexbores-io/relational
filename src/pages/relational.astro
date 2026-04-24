@@ -44,6 +44,44 @@ import SiteHeader from '../components/SiteHeader.astro';
   </section>
 
   <section class="block">
+    <p class="section-eyebrow">practice</p>
+    <h2>Try it on a simulated friend</h2>
+    <div class="prose" style="margin-bottom: 18px;">
+      <p>Alex is a Dem in NY-12 who's seen some attack ads and isn't sure what to think. Text them about the race — you'll see Alex's reply and a suggested next message. The goal is a commitment to vote, in about five back-and-forths.</p>
+    </div>
+
+    <div class="practice" id="practice-widget">
+      <div class="practice-controls">
+        <label class="practice-label" for="alex-generation">
+          Alex's vibe
+          <select id="alex-generation">
+            <option value="millennial" selected>Millennial</option>
+            <option value="genz">Gen Z</option>
+            <option value="genx">Gen X</option>
+            <option value="boomer">Boomer</option>
+          </select>
+        </label>
+        <button type="button" id="practice-reset" class="practice-btn-small">Reset</button>
+      </div>
+
+      <div id="chat-log" class="chat-log" aria-live="polite"></div>
+
+      <div id="suggestion-box" class="suggestion-box" hidden>
+        <p class="suggestion-label">try saying</p>
+        <p id="suggestion-text" class="suggestion-text"></p>
+        <button type="button" id="use-suggestion" class="practice-btn-small">Use this</button>
+      </div>
+
+      <form id="chat-form" class="chat-form">
+        <textarea id="chat-input" rows="2" placeholder="Type your reply to Alex…" required></textarea>
+        <button type="submit" class="btn btn-send">Send</button>
+      </form>
+
+      <p id="chat-status" class="chat-status" hidden></p>
+    </div>
+  </section>
+
+  <section class="block">
     <p class="section-eyebrow">norms</p>
     <h2>A few rules</h2>
     <div class="prose">
@@ -59,3 +97,159 @@ import SiteHeader from '../components/SiteHeader.astro';
 
   <Footer />
 </Base>
+
+<script is:inline>
+  const SUPABASE_URL = 'https://raapcbxeylsxsnzvdjpv.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJhYXBjYnhleWxzeHNuenZkanB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MTYyOTMsImV4cCI6MjA3MTM5MjI5M30.4OOQYiDmvsuo8C4e4ZMdgPc4uoDRR_0691lKW7LUyc8';
+
+  const GEN_PROMPTS = {
+    genz: "You are Alex, a Gen Z friend (born 1997-2012). Use heavy Gen Z slang like 'no cap', 'fr fr', 'periodt', 'slaps', 'hits different', 'bussin', 'slay', 'it’s giving…', 'main character energy', 'understood the assignment', 'lowkey/highkey', 'bet', 'say less', 'that’s so valid', 'we love to see it'. Use lots of emojis and abbreviations. Be very casual with punctuation and caps.",
+    millennial: "You are Alex, a Millennial friend (born 1981-1996). Use Millennial slang like 'lit', 'fam', 'salty', 'basic', 'extra', 'ghosting', 'adulting', 'I can’t even', 'goals', 'mood', 'same', 'living my best life', 'it’s a vibe', 'no shade'. Reference pop culture from the 2000s-2010s.",
+    genx: "You are Alex, a Gen X friend (born 1965-1980). Use Gen X slang like 'whatever', 'as if', 'talk to the hand', 'tight', 'dope', 'rad', 'bogus', 'my bad', 'don’t go there', 'psych!', 'what’s the 411?'. Be somewhat cynical and sarcastic.",
+    boomer: "You are Alex, a Baby Boomer friend (born 1946-1964). Be mildly tech illiterate with unnaturally proper punctuation and capitalization. Use phrases like 'How do you do?', 'That sounds wonderful.', 'I will have to check my calendar', 'Please let me know', 'Thank you kindly', 'Take care now'. Sometimes add unnecessary periods and formal language. Occasionally ask what abbreviations mean."
+  };
+
+  const SCENARIO = "You are Alex, a friend who lives in NY-12 and votes Democratic but isn’t very politically engaged. You’ve seen some of the anti-Bores attack ads from an AI-industry super-PAC (focused on the Palantir / ICE angle), and you’re mildly skeptical. For this roleplay, converge toward agreeing to vote for Alex Bores in the June 23 Democratic primary (or at least committing to look into him more before election day). Resolve in at most 5 messages. Replies should be brief like real texting, 1-2 sentences max.";
+
+  const openingLine = "hey what’s up — what did you want to tell me?";
+
+  let messages = [{ role: 'alex', text: openingLine }];
+  let isComplete = false;
+
+  const $ = (id) => document.getElementById(id);
+  const chatLog = $('chat-log');
+  const chatForm = $('chat-form');
+  const chatInput = $('chat-input');
+  const suggestionBox = $('suggestion-box');
+  const suggestionText = $('suggestion-text');
+  const useSuggestion = $('use-suggestion');
+  const genSelect = $('alex-generation');
+  const resetBtn = $('practice-reset');
+  const statusEl = $('chat-status');
+  const sendBtn = chatForm.querySelector('button[type=submit]');
+
+  const escapeHtml = (s) =>
+    s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+  function render() {
+    chatLog.innerHTML = messages.map((m) => `
+      <div class="chat-msg chat-msg-${m.role}">
+        <div class="chat-who">${m.role === 'user' ? 'you' : 'Alex'}</div>
+        <div class="chat-text">${escapeHtml(m.text)}</div>
+      </div>
+    `).join('');
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  function setStatus(text, isError) {
+    statusEl.hidden = !text;
+    statusEl.textContent = text || '';
+    statusEl.classList.toggle('chat-status-error', !!isError);
+  }
+
+  function setSending(sending) {
+    chatInput.disabled = sending || isComplete;
+    sendBtn.disabled = sending || isComplete;
+    sendBtn.textContent = sending ? 'Sending…' : 'Send';
+  }
+
+  async function sendMessage(text) {
+    messages.push({ role: 'user', text });
+    render();
+    chatInput.value = '';
+    suggestionBox.hidden = true;
+    setSending(true);
+    setStatus('Alex is typing…');
+
+    try {
+      const history = messages
+        .map((m) => `${m.role === 'user' ? 'User' : 'Alex'}: ${m.text}`)
+        .join('\n');
+      const gen = genSelect.value;
+      const fullPrompt = `${GEN_PROMPTS[gen]} ${SCENARIO}
+
+Previous conversation:
+${history}
+
+You must respond with EXACTLY this format:
+ALEX: [Alex's response here]
+SUGGESTION: [A brief next text the user could send to nudge Alex toward voting for Bores]
+COMPLETE: [true/false — true only if Alex has definitively committed to vote for Bores in the June 23 primary]
+
+The SUGGESTION should be a complete, ready-to-send message that fits the user's tone.`;
+
+      const res = await fetch(`${SUPABASE_URL}/functions/v1/text-friend`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify({ userMessage: fullPrompt }),
+      });
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+      const ct = res.headers.get('content-type') || '';
+      const raw = ct.includes('application/json') ? await res.json() : await res.text();
+      const full =
+        typeof raw === 'string'
+          ? raw
+          : raw.response || raw.content || raw.message || JSON.stringify(raw);
+
+      const alexMatch = full.match(/ALEX:\s*([\s\S]*?)(?=\n\s*SUGGESTION:|$)/);
+      const suggestionMatch = full.match(/SUGGESTION:\s*([\s\S]*?)(?=\n\s*COMPLETE:|$)/);
+      const completeMatch = full.match(/COMPLETE:\s*(.*?)\s*$/);
+
+      const alexMsg = (alexMatch ? alexMatch[1] : full).trim();
+      const suggestion = (suggestionMatch ? suggestionMatch[1] : '').trim();
+      const complete = completeMatch
+        ? /true/i.test(completeMatch[1])
+        : false;
+
+      messages.push({ role: 'alex', text: alexMsg });
+      render();
+
+      if (complete) {
+        isComplete = true;
+        setStatus('✓ Alex committed to voting for Bores. Nice work.');
+        suggestionBox.hidden = true;
+      } else if (suggestion) {
+        suggestionText.textContent = suggestion;
+        suggestionBox.hidden = false;
+        setStatus('');
+      } else {
+        setStatus('');
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus(`Something broke: ${err.message}. Try again.`, true);
+    } finally {
+      setSending(false);
+      if (!isComplete) chatInput.focus();
+    }
+  }
+
+  chatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = chatInput.value.trim();
+    if (text && !isComplete) sendMessage(text);
+  });
+
+  useSuggestion.addEventListener('click', () => {
+    chatInput.value = suggestionText.textContent;
+    chatInput.focus();
+  });
+
+  resetBtn.addEventListener('click', () => {
+    messages = [{ role: 'alex', text: openingLine }];
+    isComplete = false;
+    setStatus('');
+    suggestionBox.hidden = true;
+    chatInput.value = '';
+    setSending(false);
+    render();
+  });
+
+  render();
+</script>
